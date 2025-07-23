@@ -2,16 +2,11 @@
 
 import * as React from "react"
 import {
-    AudioWaveform,
-    BookOpen,
-    Bot,
-    Command,
+   
     Frame,
-    GalleryVerticalEnd,
-    Map,
-    PieChart,
+
     Settings2,
-    SquareTerminal,
+
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -26,88 +21,84 @@ import {
     SidebarRail,
 } from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
+import { title } from "process"
+import { AboutIcon, BookingIcon, BoostIcon, ChangePasswordIcon, DashboardIcon, DisputeIcon, FaqIcon, PayoutIcon, ReferralIcon, ReportIcon, ServiceIcon, TermsIcon, TransactionIcon, UsersIcon } from "./custom-icons"
 
 // This is sample data.
-const data = {
+export const data = {
     user: {
         name: "shadcn",
         email: "m@example.com",
         avatar: "/avatars/shadcn.jpg",
     },
 
-    teams: [
-        {
-            name: "Acme Inc",
-            logo: GalleryVerticalEnd,
-            plan: "Enterprise",
-        },
-        {
-            name: "Acme Corp.",
-            logo: AudioWaveform,
-            plan: "Startup",
-        },
-        {
-            name: "Evil Corp.",
-            logo: Command,
-            plan: "Free",
-        },
-    ],
-    
+
     projects: [
         {
             name: "Dashboard",
-            url: "commonDashboard",
-            icon: Frame,
+            title: "Dashboard Overview",
+            url: "dashboard",
+            icon: DashboardIcon,
         },
         {
             name: "Users",
+            title: "Users",
             url: "users",
-            icon: Frame,
+            icon: UsersIcon,
         },
         {
             name: "Bookings",
+            title: "Booking Management Portal",
             url: "bookings",
-            icon: Frame,
+            icon: BookingIcon,
         },
         {
             name: "Services",
+            title: "Service Catalog Management",
             url: "services",
-            icon: Frame,
+            icon: ServiceIcon,
         },
         {
             name: "Transactions",
-            url: "transitions",
-            icon: Frame,
+            title: "Financial Transactions Log",
+            url: "transactions",
+            icon: TransactionIcon,
         },
         {
             name: "Payouts",
+            title: "Payment Processing System",
             url: "payouts",
-            icon: Frame,
+            icon: PayoutIcon,
         },
         {
             name: "Referral management",
+            title: "Referral Program Administration",
             url: "referralManagement",
-            icon: Frame,
+            icon: ReferralIcon,
         },
         {
             name: "Dispute management",
+            title: "Conflict Resolution Center",
             url: "disputeManagement",
-            icon: Frame,
+            icon: DisputeIcon,
         },
         {
             name: "Promotions",
+            title: "Marketing Campaign Manager",
             url: "promotions",
             icon: Frame,
         },
         {
             name: "Boost control",
-            url: "BoostControl",
-            icon: Frame,
+            title: "Service Visibility Booster",
+            url: "boostControl",
+            icon: BoostIcon,
         },
         {
             name: "Reports",
+            title: "Analytics and Reporting Hub",
             url: "reports",
-            icon: Frame,
+            icon: ReportIcon,
         },
     ],
     navMain: [
@@ -118,55 +109,59 @@ const data = {
             items: [
                 {
                     title: "Change Password",
-                    url: "#",
-                    icon: (
-                        <svg
-                            className="h-4 w-4 text-white"
-                            viewBox="0 0 30 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M7 9.222C6.51747 9.222 6.1096 9.05587 5.7764 8.7236..."
-                                fill="currentColor"
-                            />
-                        </svg>
-                    ),
+                    description: "Update Account Security Credentials",
+                    url: "changePassword",
+                    icon: ChangePasswordIcon,
                 },
                 {
                     title: "Terms & Conditions",
-                    url: "#",
+                    description: "Legal Policies and Agreements",
+                    url: "terms&Conditions",
+                    icon:TermsIcon,
                 },
                 {
                     title: "About us",
-                    url: "#",
+                    description: "Company Information and Background",
+                    url: "aboutUs",
+                    icon:AboutIcon,
                 },
                 {
                     title: "FAQ",
-                    url: "#",
+                    description: "Frequently Asked Questions",
+                    url: "faq",
+                    icon:FaqIcon,
                 },
             ],
         },
     ],
-    
+
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
         <Sidebar collapsible="icon" {...props}>
-            <SidebarHeader>
-                <TeamSwitcher teams={data.teams} />
+            <SidebarHeader className="bg-[#1E1E1E]">
+
             </SidebarHeader>
 
 
-            <SidebarContent>
-                <NavProjects projects={data.projects} />
-                <NavMain items={data.navMain} /> 
+
+
+
+            <SidebarContent className="bg-[#1E1E1E] text-white">
+                <div className="">
+                    <NavProjects projects={data.projects} />
+                </div>
+                <NavMain items={data.navMain} />
             </SidebarContent>
 
 
-            <SidebarFooter>
-               <Button>Log Out</Button>
+
+
+
+
+            <SidebarFooter className="bg-[#1E1E1E]">
+                <Button className="bg-[#FF6600] hover:bg-[#ff6600b9] cursor-pointer">Log Out</Button>
             </SidebarFooter>
             <SidebarRail />
         </Sidebar>

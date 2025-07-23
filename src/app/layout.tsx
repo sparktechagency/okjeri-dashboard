@@ -1,18 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+
+
+
+const degular = localFont({
+  src: [
+    {
+      path: './fonts/DegularDisplay-Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/DegularDisplay-Medium.otf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/DegularDisplay-Semibold.otf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './fonts/DegularDisplay-Bold.otf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: "--font-degular",
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
+
 
 export const metadata: Metadata = {
   title: "Okjeri dashboard",
@@ -26,16 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-         <SidebarProvider>
-          <AppSidebar />
-          <main className=""> 
-            <SidebarTrigger />
-            {children}
-          </main>
-        </SidebarProvider>
+      <body >
+        <main className={degular.className}>
+          {children}
+        </main>
       </body>
-
     </html>
   );
 }
