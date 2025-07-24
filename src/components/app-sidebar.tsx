@@ -4,15 +4,12 @@ import * as React from "react"
 import {
    
     Frame,
-
     Settings2,
 
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
 import {
     Sidebar,
     SidebarContent,
@@ -25,7 +22,7 @@ import { title } from "process"
 import { AboutIcon, BookingIcon, BoostIcon, ChangePasswordIcon, DashboardIcon, DisputeIcon, FaqIcon, PayoutIcon, ReferralIcon, ReportIcon, ServiceIcon, TermsIcon, TransactionIcon, UsersIcon } from "./custom-icons"
 
 // This is sample data.
-export const data = {
+export const data  = {
     user: {
         name: "shadcn",
         email: "m@example.com",
@@ -48,7 +45,7 @@ export const data = {
         },
         {
             name: "Bookings",
-            title: "Booking Management Portal",
+            title: "Manage bookings",
             url: "bookings",
             icon: BookingIcon,
         },
@@ -60,7 +57,7 @@ export const data = {
         },
         {
             name: "Transactions",
-            title: "Financial Transactions Log",
+            title: "Transactions",
             url: "transactions",
             icon: TransactionIcon,
         },
@@ -167,3 +164,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </Sidebar>
     )
 }
+
+

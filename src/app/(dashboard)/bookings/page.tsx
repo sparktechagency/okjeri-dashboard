@@ -1,9 +1,10 @@
+import ServiceBookingTable from "@/components/service-booking-table"
 
 
 const BookingPage = () => {
   return (
     <div>
-      <h1>BookingPage</h1>
+      <ServiceBookingTable />
     </div>
   )
 }

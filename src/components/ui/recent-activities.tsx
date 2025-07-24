@@ -32,7 +32,7 @@ export default function RecentActivities() {
 
                     <div>
                         <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" stroke-opacity="0.2" />
+                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" strokeOpacity="0.2" />
                             <path d="M19.1273 29.9409L27.6313 21.4369L21.1068 21.5183L21.1324 19.4681L31.1569 19.3431L31.0318 29.3676L28.9817 29.3932L29.0631 22.8687L20.5591 31.3727L19.1273 29.9409Z" fill="black" />
                         </svg>
                     </div>
@@ -62,7 +62,7 @@ export default function RecentActivities() {
 
                     <div>
                         <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" stroke-opacity="0.2" />
+                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" strokeOpacity="0.2" />
                             <path d="M19.1273 29.9409L27.6313 21.4369L21.1068 21.5183L21.1324 19.4681L31.1569 19.3431L31.0318 29.3676L28.9817 29.3932L29.0631 22.8687L20.5591 31.3727L19.1273 29.9409Z" fill="black" />
                         </svg>
                     </div>
@@ -107,7 +107,7 @@ export default function RecentActivities() {
                     </div>
                     <div>
                         <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" stroke-opacity="0.2" />
+                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" strokeOpacity="0.2" />
                             <path d="M19.1273 29.9409L27.6313 21.4369L21.1068 21.5183L21.1324 19.4681L31.1569 19.3431L31.0318 29.3676L28.9817 29.3932L29.0631 22.8687L20.5591 31.3727L19.1273 29.9409Z" fill="black" />
                         </svg>
                     </div>
@@ -138,7 +138,7 @@ export default function RecentActivities() {
                     </div>
                     <div>
                         <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" stroke-opacity="0.2" />
+                            <rect x="1" y="0.5" width="49" height="49" rx="24.5" stroke="black" strokeOpacity="0.2" />
                             <path d="M19.1273 29.9409L27.6313 21.4369L21.1068 21.5183L21.1324 19.4681L31.1569 19.3431L31.0318 29.3676L28.9817 29.3932L29.0631 22.8687L20.5591 31.3727L19.1273 29.9409Z" fill="black" />
                         </svg>
                     </div>

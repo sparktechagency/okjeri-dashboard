@@ -1,84 +1,70 @@
+
 "use client"
 
 import {
-  Folder,
-  Forward,
-  MoreHorizontal,
-  Trash2,
   type LucideIcon,
 } from "lucide-react"
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
 
-export function NavProjects({
-  projects,
-}: {
-  projects: {
-    name: string
-    url: string
-    icon: LucideIcon
-  }[]
-}) {
-  const { isMobile } = useSidebar()
+
+type ProjectItem = {
+  name: string
+  title: string
+  url: string
+  icon: LucideIcon
+}
+
+interface NavProjectsProps {
+  projects: ProjectItem[]
+}
+
+interface SidebarContext {
+  isCollapsed: boolean;
+}
+
+
+export function NavProjects({ projects }: NavProjectsProps) {
+  const { isCollapsed } = useSidebar() as unknown as SidebarContext;
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup>
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <Link href={item.url}>
-                <item.icon />
-                <span>{item.name}</span>
-              </Link>
-            </SidebarMenuButton>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuAction showOnHover>
-                  <span className="sr-only">More</span>
-                </SidebarMenuAction>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className="w-48 rounded-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
-                <DropdownMenuItem>
-                  <Folder className="text-muted-foreground" />
-                  <span>View Project</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Forward className="text-muted-foreground" />
-                  <span>Share Project</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Trash2 className="text-muted-foreground" />
-                  <span>Delete Project</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <SidebarMenuButton asChild>
+                  <Link href={item.url} className="flex items-center gap-2">
+                    <item.icon className="h-4 w-4" />
+                    {!isCollapsed && (
+                      <span>{item.name}</span>
+                    )}
+                  </Link>
+                </SidebarMenuButton>
+              </TooltipTrigger>
+              {/* Show different tooltip content based on collapsed state */}
+              {isCollapsed ? (
+                <TooltipContent side="right">
+                  <p>{item.title}</p>
+                </TooltipContent>
+              ) : (
+                <TooltipContent side="right">
+                  <p>{item.name}</p>
+                </TooltipContent>
+              )}
+            </Tooltip>
           </SidebarMenuItem>
         ))}
-        <SidebarMenuItem>
-
-        </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
   )
