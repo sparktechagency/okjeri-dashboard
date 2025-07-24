@@ -103,9 +103,12 @@ const TransactionsPage = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>("")
   const router = useRouter()
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event:any) => {
     setSearchText(event.target.value);
   };
+
+console.log(searchText, 'transiton')
+
 
   return (
     <div className="w-full bg-white p-6">

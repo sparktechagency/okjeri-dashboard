@@ -17,7 +17,7 @@ import Image from "next/image"
 
 export function BookingModal() {
   return (
-    <Dialog>
+    <Dialog >
       <form>
         <DialogTrigger asChild>
           <button className="cursor-pointer">
@@ -30,29 +30,28 @@ export function BookingModal() {
 
 
 
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogContent className="max-w-md p-0 gap-0 rounded-2xl">
-            {/* Header */}
-            <DialogHeader className="bg-[#FF6B35] text-white p-4 rounded-t-2xl relative">
-              <h2 className="text-center font-medium text-base">Booking details</h2>
-            </DialogHeader>
 
-            <div className="p-4 space-y-4">
-         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quidem nemo, autem veritatis distinctio deserunt veniam. Officia, exercitationem, quasi cupiditate, repellat consequuntur dolore incidunt qui aperiam culpa voluptatibus nemo quis.
+        <DialogContent className="!max-w-[50vw]  p-0 gap-0 rounded-2xl">
+          {/* Header */}
+          <DialogHeader className="bg-[#FF6B35] text-white p-4 rounded-t-2xl relative">
+            <h2 className="text-center font-medium text-base">Booking details</h2>
+          </DialogHeader>
 
-              {/* Footer Buttons */}
-              <div className="flex gap-3 pt-2">
-                <Button
-                  variant="outline"
-                  className="flex-1 text-gray-700 border-gray-300 hover:bg-gray-50 bg-transparent"
+          <div className="p-4 space-y-4 ">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quidem nemo, autem veritatis distinctio deserunt veniam. Officia, exercitationem, quasi cupiditate, repellat consequuntur dolore incidunt qui aperiam culpa voluptatibus nemo quis.
 
-                >
-                  Close
-                </Button>
-                <Button className="flex-1 bg-red-500 hover:bg-red-600 text-white">Cancel booking</Button>
-              </div>
+            {/* Footer Buttons */}
+            <div className="flex gap-3 pt-2">
+              <Button
+                variant="outline"
+                className="flex-1 text-gray-700 border-gray-300 hover:bg-gray-50 bg-transparent"
+
+              >
+                Close
+              </Button>
+              <Button className="flex-1 bg-red-500 hover:bg-red-600 text-white">Cancel booking</Button>
             </div>
-          </DialogContent>
+          </div>
         </DialogContent>
       </form>
     </Dialog>

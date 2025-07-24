@@ -93,7 +93,7 @@ export const data  = {
         },
         {
             name: "Reports",
-            title: "Analytics and Reporting Hub",
+            title: "Reports",
             url: "reports",
             icon: ReportIcon,
         },
