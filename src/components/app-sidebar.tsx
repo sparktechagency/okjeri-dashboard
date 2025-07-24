@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
 import { title } from "process"
-import { AboutIcon, BookingIcon, BoostIcon, ChangePasswordIcon, DashboardIcon, DisputeIcon, FaqIcon, PayoutIcon, ReferralIcon, ReportIcon, ServiceIcon, TermsIcon, TransactionIcon, UsersIcon } from "./custom-icons"
+import { AboutIcon, BookingIcon, BoostIcon, ChangePasswordIcon, DashboardIcon, DisputeIcon, FaqIcon, PayoutIcon, Promotions, ReferralIcon, ReportIcon, ServiceIcon, TermsIcon, TransactionIcon, UsersIcon } from "./custom-icons"
 
 // This is sample data.
 export const data  = {
@@ -83,7 +83,7 @@ export const data  = {
             name: "Promotions",
             title: "Marketing Campaign Manager",
             url: "promotions",
-            icon: Frame,
+            icon: Promotions,
         },
         {
             name: "Boost control",
