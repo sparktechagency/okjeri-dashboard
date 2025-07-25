@@ -43,6 +43,7 @@ export const data  = {
             url: "users",
             icon: UsersIcon,
         },
+     
         {
             name: "Bookings",
             title: "Manage bookings",

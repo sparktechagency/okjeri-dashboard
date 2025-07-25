@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table"
 
 import { Input } from "@/components/ui/input"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { log } from "console"
 import { Search } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -118,20 +118,38 @@ const UserPage = () => {
   const [endIndex, setIndex] = useState()
   const [selectedFilter, setSelectedFilter] = useState<string>("")
   const router = useRouter()
+  const [activeTab, setActiveTab] = useState("Users")
 
 
-  console.log(selectedFilter)
+
+
+
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value)
+  }
 
   const handleReviewRequest = () => {
-    router.push('/reviewRequest')
+    router.push('/userReviewRequest')
   }
+  const handleKYCRequest = () => {
+    router.push('/userReviewRequest')
+  }
+
+
+  useEffect(() => {
+
+    if (activeTab === "Providers") {
+      router.push('/provider')
+    }
+  }, [activeTab,router])
+
+
+
 
   return (
     <div className="container mx-auto py-10">
-
-
       <div className="flex items-center justify-between">
-
         <div>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-6 w-6" />
@@ -158,7 +176,7 @@ const UserPage = () => {
             </span>
           </button>
 
-          <button className="px-6 py-4 bg-[#FF6600] rounded-full text-white">
+          <button onClick={handleKYCRequest} className="cursor-pointer px-6 py-4 bg-[#FF6600] rounded-full text-white">
             KYC Requests (10)
           </button>
         </div>
@@ -166,7 +184,9 @@ const UserPage = () => {
 
 
       <div className="flex justify-between">
-        <Tabs defaultValue="Users" className="w-[400px] py-8">
+        <Tabs defaultValue="Users"
+          onValueChange={handleTabChange}
+          className="w-[400px] py-8">
           <TabsList >
             <TabsTrigger value="Users"
               className="px-8 py-4 rounded-full data-[state=active]:bg-[#FF6600] data-[state=active]:text-white cursor-pointer"
@@ -175,8 +195,6 @@ const UserPage = () => {
               className="px-8 py-4 rounded-full data-[state=active]:bg-[#FF6600] data-[state=active]:text-white cursor-pointer"
             >Providers</TabsTrigger>
           </TabsList>
-          {/* <TabsContent value="Users">Make changes to your account here.</TabsContent>
-        <TabsContent value="Providers">Change your Providers here.</TabsContent> */}
         </Tabs>
 
 
@@ -255,29 +273,29 @@ const UserPage = () => {
 
 
 
-            <div className="mt-4">
-                <Pagination className="w-fit ">
-                    <PaginationContent>
-                        <PaginationItem>
-                            <PaginationPrevious href="#" />
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#">1</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#" isActive>
-                                2
-                            </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#">3</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationNext href="#" />
-                        </PaginationItem>
-                    </PaginationContent>
-                </Pagination>
-            </div>
+      <div className="mt-4">
+        <Pagination className="w-fit ">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>
+                2
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
 
 
     </div>

@@ -14,10 +14,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import Image from 'next/image'
 
 
-const ReviewRequestPage = () => {
+const ProviderReviewRequest = () => {
     const [searchText, setSearchText] = useState('')
     const router = useRouter()
 
@@ -115,7 +114,7 @@ const ReviewRequestPage = () => {
 
 
     return (
-        <div>
+        <div className='mt-8'>
             <div className='flex justify-evenly'>
 
                 <div
@@ -196,4 +195,4 @@ const ReviewRequestPage = () => {
     )
 }
 
-export default ReviewRequestPage
+export default ProviderReviewRequest
