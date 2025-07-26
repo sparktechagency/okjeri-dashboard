@@ -9,6 +9,8 @@
 8. npx shadcn@latest add card
 9. npx shadcn@latest add badge
 10. npx shadcn@latest add pagination
+11. npx shadcn@latest add input
+12. npx shadcn@latest add label
 
 
 
