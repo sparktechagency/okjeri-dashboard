@@ -13,7 +13,7 @@ export default function RootLayout({
     <>
       <SidebarProvider>
         <AppSidebar />
-        <div className="w-full m-4 rounded">
+        <div className="w-full  m-4 rounded">
           <SidebarTrigger />
           <SiteHeader />
           {children}

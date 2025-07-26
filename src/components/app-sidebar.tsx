@@ -2,10 +2,7 @@
 
 import * as React from "react"
 import {
-   
-    Frame,
     Settings2,
-
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -18,7 +15,6 @@ import {
     SidebarRail,
 } from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
-import { title } from "process"
 import { AboutIcon, BookingIcon, BoostIcon, ChangePasswordIcon, DashboardIcon, DisputeIcon, FaqIcon, PayoutIcon, Promotions, ReferralIcon, ReportIcon, ServiceIcon, TermsIcon, TransactionIcon, UsersIcon } from "./custom-icons"
 
 // This is sample data.
@@ -52,7 +48,7 @@ export const data  = {
         },
         {
             name: "Services",
-            title: "Service Catalog Management",
+            title: "Services",
             url: "services",
             icon: ServiceIcon,
         },
@@ -64,7 +60,7 @@ export const data  = {
         },
         {
             name: "Payouts",
-            title: "Payment Processing System",
+            title: "Payout requests",
             url: "payouts",
             icon: PayoutIcon,
         },
@@ -139,14 +135,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader className="bg-[#1E1E1E]">
-
             </SidebarHeader>
 
 
 
 
 
-            <SidebarContent className="bg-[#1E1E1E] text-white">
+            <SidebarContent className="bg-[#1E1E1E] text-white text-8xl">
                 <div className="">
                     <NavProjects projects={data.projects} />
                 </div>
