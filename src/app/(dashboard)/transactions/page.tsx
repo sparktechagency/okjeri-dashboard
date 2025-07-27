@@ -132,9 +132,6 @@ console.log(searchText, 'transiton')
 
 
 
-
-
-
       {/* Table */}
       <div className="border border-gray-200 rounded-lg overflow-hidden">
         <Table>

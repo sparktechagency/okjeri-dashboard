@@ -168,6 +168,8 @@ export default function ServicePage() {
           <ServiceAddCategoryModal open={isModalOpen} onOpenChange={setIsModalOpen}/>
         </div>
       </div>
+
+  
     </div>
   )
 }
