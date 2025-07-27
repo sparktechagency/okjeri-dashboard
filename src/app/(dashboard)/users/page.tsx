@@ -301,8 +301,11 @@ const UserPage = () => {
 
 
       {/* modal component */}
-      <CustomModal open={isOpen} setIsOpen={setIsOpen} className={"p-2 max-h-[50vh]"} 
-      maxWidth={"!max-w-[40vw]"}
+      <CustomModal
+        open={isOpen}
+        setIsOpen={setIsOpen}
+        className={"p-2 max-h-[50vh]"}
+        maxWidth={"!max-w-[40vw]"}
       >
         <UserDetailsPage />
       </CustomModal>
