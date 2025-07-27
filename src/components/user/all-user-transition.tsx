@@ -2,16 +2,18 @@
 
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
-import { Wallet, ArrowUpRight, CheckCircle } from "lucide-react"
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useState } from "react";
+import CustomModal from "../modal/customModal";
+import ReportOfUser from "./report-of-user";
 
 const AllUserTransition = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpenUser, setIsOpenUser] = useState(false)
 
+
+    console.log(isOpenUser)
 
     interface Transaction {
         id: string
@@ -333,7 +335,7 @@ const AllUserTransition = () => {
         <div>
             <h1 className="text-center text-[24px] pb-4">All transactions</h1>
             <div className=" m-4">
-               
+
                 <Card className="rounded-2xl border">
                     <CardHeader className="px-6 pt-6 pb-4">
                         <div className="grid grid-cols-[minmax(150px,1.5fr)_minmax(150px,2fr)_minmax(150px,2fr)_minmax(80px,1fr)] gap-4 text-sm font-medium text-gray-500">
@@ -378,7 +380,23 @@ const AllUserTransition = () => {
             </div>
 
 
-            <Button className="w-full rounded-full text-center py-6 text-[16px] cursor-pointer">Make report</Button>
+            <Button
+                onClick={() => setIsOpenUser(!isOpenUser)}
+                className="w-[96%] mx-auto flex justify-center items-center rounded-full text-center py-6 text-[16px] cursor-pointer">
+                Make report
+            </Button>
+
+
+
+            {/* modal component */}
+            <CustomModal
+                open={isOpenUser}
+                setIsOpen={setIsOpenUser}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[45vw]"}
+            >
+                <ReportOfUser />
+            </CustomModal>
         </div>
     )
 }
