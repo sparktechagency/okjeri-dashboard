@@ -392,7 +392,7 @@ const AllUserTransition = () => {
             <CustomModal
                 open={isOpenUser}
                 setIsOpen={setIsOpenUser}
-                className={"p-2 max-h-[0vh]"}
+                className={"p-2 max-h-[30vh]"}
                 maxWidth={"!max-w-[45vw]"}
             >
                 <ReportOfUser />

@@ -1,78 +1,28 @@
-
+"use client"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import { Wallet, ArrowUpRight, CheckCircle } from "lucide-react"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button";
 import { useState } from "react";
 import CustomModal from "../modal/customModal";
-import AllUserTransition from "./all-user-transition";
 import UserNationalIdCard from "./user-national-id-card";
+import UserRejectionKycRequest from "./user-rejection-kyc-request";
+import UserDetailsAccepted from "./user-details-accept";
 
 
 
-const UserDetailsPage = () => {
-    const [isOpen, setIsOpen] = useState(false)
+
+
+const UserDetailsKycRequest = () => {
     const [isOpenTwo, setIsOpenTwo] = useState(false)
+    const [isOpenReject, setIsOpenReject] = useState(false)
+    const [isOpenApproved, setIsOpenApproved] = useState(false)
 
-    interface Transaction {
-        id: string
-        providerName: string
-        providerAvatar: string
-        from: string
-        to: string
-        amount: number
-        currency: string
-        isVerified: boolean
-    }
-
-    const transactions: Transaction[] = [
-        {
-            id: "1",
-            providerName: "John Doe",
-            providerAvatar: "/placeholder-user.jpg",
-            from: "**** **** 8569",
-            to: "0x7474hfddos.....f44e",
-            amount: 500.0,
-            currency: "₦",
-            isVerified: true,
-        },
-        {
-            id: "2",
-            providerName: "John Doe",
-            providerAvatar: "/placeholder-user.jpg",
-            from: "**** **** 8569",
-            to: "0x7474hfddos.....f44e",
-            amount: 500.0,
-            currency: "₦",
-            isVerified: true,
-        },
-        {
-            id: "3",
-            providerName: "John Doe",
-            providerAvatar: "/placeholder-user.jpg",
-            from: "0x7474hfddos.....f44e",
-            to: "0x7474hfddos.....f44e",
-            amount: 500.0,
-            currency: "₦",
-            isVerified: true,
-        },
-        {
-            id: "4",
-            providerName: "John Doe",
-            providerAvatar: "/placeholder-user.jpg",
-            from: "0x7474hfddos.....f44e",
-            to: "0x7474hfddos.....f44e",
-            amount: 500.0,
-            currency: "₦",
-            isVerified: true,
-        },
-    ]
 
     return (
-        <div className="">
-            <h1 className="text-center text-[24px] pb-4">User details</h1>
+        <div>
+            <h1 className="text-center text-[24px] pb-4">KYC request</h1>
+
 
             <div className="flex flex-col items-center text-center">
                 <Avatar className="w-24 h-24 mb-4 border-2 border-gray-200">
@@ -144,8 +94,8 @@ const UserDetailsPage = () => {
                     <div className="border rounded-xl p-4 flex-1 relative">
                         <div className="flex items-center justify-between mb-2">
                             <Badge
-                            onClick={() => setIsOpenTwo(!isOpenTwo)}
-                            className="bg-green-500 hover:bg-green-600 cursor-pointer">Verified</Badge>
+                                onClick={() => setIsOpenTwo(!isOpenTwo)}
+                                className="bg-[#9747FF] hover:bg-[#9747FF] hover:opacity-90 cursor-pointer">In review</Badge>
                             <span
                                 onClick={() => setIsOpenTwo(!isOpenTwo)}
                                 className="hover:bg-primary border p-2 rounded-full cursor-pointer group transition-colors duration-200">
@@ -185,98 +135,59 @@ const UserDetailsPage = () => {
             </div>
 
 
+            <div className="w-[90%] mx-auto flex justify-center items-center pb-4  gap-4">
+                <Button
+                    onClick={() => setIsOpenReject(!isOpenReject)}
+                    className="w-[50%] mx-auto bg-[#EF4444] hover:bg-[#EF4444] hover:opacity-90  flex justify-center items-center rounded-full text-center py-6 text-[16px] cursor-pointer">
+                    Reject
+                </Button>
 
-            {/* transition */}
-
-            <div className=" m-4">
-                <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                        <Wallet className="w-6 h-6 text-orange-500" />
-                        <h2 className="text-xl font-semibold text-gray-900">Transaction details</h2>
-                    </div>
-                    <Button
-                        onClick={() => setIsOpen(!isOpen)}
-                        variant="outline"
-                        className="group rounded-lg px-4 py-2 text-sm font-medium flex items-center gap-1 bg-transparent hover:bg-primary hover:text-[#ffff] transition-all duration-300 ease-in-out cursor-pointer"
-                    >
-                        See all
-                        <ArrowUpRight className="w-4 h-4 text-current transition-all duration-300 ease-in-out group-hover:text-white group-hover:translate-x-0.5 " />
-                    </Button>
-
-                </div>
-
-                <Card className="rounded-2xl border">
-                    <CardHeader className="px-6 pt-6 pb-4">
-                        <div className="grid grid-cols-[minmax(150px,1.5fr)_minmax(150px,2fr)_minmax(150px,2fr)_minmax(80px,1fr)] gap-4 text-sm font-medium text-gray-500">
-                            <div>Provider</div>
-                            <div>From</div>
-                            <div>To</div>
-                            <div className="text-right">Amount</div>
-                        </div>
-                    </CardHeader>
-                    <CardContent className="px-6 pb-6 pt-0">
-                        <div className="space-y-4">
-                            {transactions.map((transaction) => (
-                                <div
-                                    key={transaction.id}
-                                    className="grid grid-cols-[minmax(150px,1.5fr)_minmax(150px,2fr)_minmax(150px,2fr)_minmax(80px,1fr)] gap-4 items-center text-sm"
-                                >
-                                    <div className=" flex items-center gap-2">
-                                        <Avatar className="w-8 h-8">
-                                            <AvatarImage
-                                                src={"/photo2.jpg"}
-                                                alt={transaction.providerName}
-                                            />
-                                            <AvatarFallback>{transaction.providerName.charAt(0)}</AvatarFallback>
-                                        </Avatar>
-                                        <span className="font-medium text-gray-900">{transaction.providerName}</span>
-                                        <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M7.6 21L5.7 17.8L2.1 17L2.45 13.3L0 10.5L2.45 7.7L2.1 4L5.7 3.2L7.6 0L11 1.45L14.4 0L16.3 3.2L19.9 4L19.55 7.7L22 10.5L19.55 13.3L19.9 17L16.3 17.8L14.4 21L11 19.55L7.6 21ZM9.95 14.05L15.6 8.4L14.2 6.95L9.95 11.2L7.8 9.1L6.4 10.5L9.95 14.05Z" fill="#4285F4" />
-                                        </svg>
-
-                                    </div>
-                                    <div className="text-gray-700">{transaction.from}</div>
-                                    <div className="text-gray-700">{transaction.to}</div>
-                                    <div className="text-right font-medium text-gray-900">
-                                        {transaction.currency}
-                                        {transaction.amount.toFixed(2)}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </CardContent>
-                </Card>
+                <Button
+                    onClick={() => setIsOpenApproved(!isOpenApproved)}
+                    className="w-[50%] mx-auto bg-[#00B400] hover:bg-[#00B400] hover:opacity-90  flex justify-center items-center rounded-full text-center py-6 text-[16px] cursor-pointer">
+                    Approve
+                </Button>
             </div>
 
 
 
-            {/* modal component */}
+            {/* modal component(USER_NATIONAL_ID_CURD) */}
             <CustomModal
-                open={isOpen}
-                setIsOpen={setIsOpen}
+                open={isOpenTwo}
+                setIsOpen={setIsOpenTwo}
                 className={"p-2 max-h-[30vh]"}
-                maxWidth={"!max-w-[50vw]"}
+                maxWidth={"!max-w-[35vw]"}
             >
-                <AllUserTransition />
+                <UserNationalIdCard />
+            </CustomModal>
+
+
+            {/* modal component(User_Rejection_Kyc_Request)*/}
+            <CustomModal
+                open={isOpenReject}
+                setIsOpen={setIsOpenReject}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[35vw]"}
+            >
+                <UserRejectionKycRequest />
             </CustomModal>
 
 
 
-            {/* modal component */}
+            {/* modal component(User_Approved_Kyc_Request)*/}
             <CustomModal
-                open={isOpenTwo}
-                setIsOpen={setIsOpenTwo}
+                open={isOpenApproved}
+                setIsOpen={setIsOpenApproved}
                 className={"p-2 max-h-[0vh]"}
                 maxWidth={"!max-w-[35vw]"}
             >
-                <UserNationalIdCard 
+                <UserDetailsAccepted
+                    open={isOpenApproved}
+                    setIsOpen={setIsOpenApproved}
                 />
             </CustomModal>
         </div>
     )
 }
 
-export default UserDetailsPage
-
-
-
+export default UserDetailsKycRequest
