@@ -3,9 +3,7 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -14,11 +12,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 import { Search } from "lucide-react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs,TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -36,12 +33,22 @@ import {
 } from "@/components/ui/select"
 import CustomModal from "@/components/modal/customModal"
 import UserDetailsPage from "@/components/user/user-details"
+import { Button } from "@/components/ui/button"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 
 
+interface User {
+  id: string
+  name: string
+  email: string
+  phone_number: string
+  location: string
+  avatar: string
+}
 
 
-const invoices = [
+const invoices: User[] = [
   {
     "id": 1,
     "name": "Emma Johnson",
@@ -123,7 +130,13 @@ const UserPage = () => {
   const [activeTab, setActiveTab] = useState("Users")
   const [isOpen, setIsOpen] = useState(false)
 
+  const [users, setUsers] = useState<User[]>(invoices)
+  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
 
+  const handleDeleteUser = (id: string) => {
+    setUsers(users.filter((user) => user.id !== id))
+    setOpenPopoverId(null) // Close the popover after deletion
+  }
 
 
 
@@ -261,13 +274,47 @@ const UserPage = () => {
                       <path d="M18.5 15.8C17.632 15.8 16.7996 16.1371 16.1858 16.7373C15.5721 17.3374 15.2273 18.1513 15.2273 19C15.2273 19.8487 15.5721 20.6626 16.1858 21.2627C16.7996 21.8629 17.632 22.2 18.5 22.2C19.368 22.2 20.2004 21.8629 20.8142 21.2627C21.4279 20.6626 21.7727 19.8487 21.7727 19C21.7727 18.1513 21.4279 17.3374 20.8142 16.7373C20.2004 16.1371 19.368 15.8 18.5 15.8ZM18.5 24.3333C17.0534 24.3333 15.666 23.7714 14.6431 22.7712C13.6201 21.771 13.0455 20.4145 13.0455 19C13.0455 17.5855 13.6201 16.229 14.6431 15.2288C15.666 14.2286 17.0534 13.6667 18.5 13.6667C19.9466 13.6667 21.334 14.2286 22.3569 15.2288C23.3799 16.229 23.9545 17.5855 23.9545 19C23.9545 20.4145 23.3799 21.771 22.3569 22.7712C21.334 23.7714 19.9466 24.3333 18.5 24.3333ZM18.5 11C13.0455 11 8.38727 14.3173 6.5 19C8.38727 23.6827 13.0455 27 18.5 27C23.9545 27 28.6127 23.6827 30.5 19C28.6127 14.3173 23.9545 11 18.5 11Z" fill="#F96D10" />
                     </svg>
                   </button>
-                  <button className="cursor-pointer">
-                    <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="34" height="38" rx="6" fill="#FFE8E8" />
-                      <path d="M24 11H20.5L19.5 10H14.5L13.5 11H10V13H24M11 26C11 26.5304 11.2107 27.0391 11.5858 27.4142C11.9609 27.7893 12.4696 28 13 28H21C21.5304 28 22.0391 27.7893 22.4142 27.4142C22.7893 27.0391 23 26.5304 23 26V14H11V26Z" fill="#FF5353" />
-                    </svg>
-                  </button>
+                  {/* Delete Popover and Button */}
+                  <Popover
+                    open={openPopoverId === user.id}
+                    onOpenChange={(open) => setOpenPopoverId(open ? user.id : null)}
+                  >
+                    <PopoverTrigger asChild>
+                      <button className="cursor-pointer">
+                        <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="34" height="38" rx="6" fill="#FFE8E8" />
+                          <path d="M24 11H20.5L19.5 10H14.5L13.5 11H10V13H24M11 26C11 26.5304 11.2107 27.0391 11.5858 27.4142C11.9609 27.7893 12.4696 28 13 28H21C21.5304 28 22.0391 27.7893 22.4142 27.4142C22.7893 27.0391 23 26.5304 23 26V14H11V26Z" fill="#FF5353" />
+                        </svg>
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-3 text-sm" align="end">
+                      <div className="flex items-center gap-2">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7 0.946045C3.61758 0.946045 0.875 3.68862 0.875 7.07104C0.875 10.4535 3.61758 13.196 7 13.196C10.3824 13.196 13.125 10.4535 13.125 7.07104C13.125 3.68862 10.3824 0.946045 7 0.946045ZM6.5625 4.11792C6.5625 4.05776 6.61172 4.00854 6.67188 4.00854H7.32812C7.38828 4.00854 7.4375 4.05776 7.4375 4.11792V7.83667C7.4375 7.89683 7.38828 7.94604 7.32812 7.94604H6.67188C6.61172 7.94604 6.5625 7.89683 6.5625 7.83667V4.11792ZM7 10.1335C6.82827 10.13 6.66476 10.0594 6.54455 9.93667C6.42434 9.81398 6.35701 9.64906 6.35701 9.47729C6.35701 9.30553 6.42434 9.14061 6.54455 9.01792C6.66476 8.89523 6.82827 8.82455 7 8.82104C7.17173 8.82455 7.33524 8.89523 7.45545 9.01792C7.57566 9.14061 7.64299 9.30553 7.64299 9.47729C7.64299 9.64906 7.57566 9.81398 7.45545 9.93667C7.33524 10.0594 7.17173 10.13 7 10.1335Z" fill="#FAAD14" />
+                        </svg>
+
+                        <span>Are you sure to delete this user?</span>
+                      </div>
+                      <div className="mt-2 flex justify-end gap-2">
+                        <Button variant="outline" size="sm" onClick={() => setOpenPopoverId(null)} className="h-8 px-3">
+                          No
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => handleDeleteUser(user.id)}
+                          className="h-8 px-3"
+                        >
+                          Yes
+                        </Button>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
                 </div>
+
+
+
+
               </TableCell>
             </TableRow>
           ))}
