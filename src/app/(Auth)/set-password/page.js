@@ -5,6 +5,7 @@ import { updateSchema } from "@/components/schema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 
 
@@ -26,6 +27,16 @@ export default function SetPassword() {
         <div className="min-h-screen flex items-center justify-center p-4">
             <Card className="w-full bg-[#636363]/0.5 max-w-lg py-20">
                 <CardHeader className="space-y-2 text-center pb-4">
+                    <div className="flex justify-center">
+                        <Image
+                            src="/logo1.png"
+                            alt="photo"
+                            width={100}
+                            height={100}
+                            className="w-[120px]  object-cover"
+                        />
+                    </div>
+
                     <h1 className="text-2xl font-semibold text-black">Set a new password</h1>
                     <p className="text-sm text-gray-600 max-w-xs mx-auto font-normal">Create a new password. Ensure it differs from
                         previous ones for security</p>
@@ -53,7 +64,7 @@ export default function SetPassword() {
 
 
                         <div className="flex justify-center">
-                            <Button variant={"main"} className="rounded-sm">Update Password</Button>
+                            <Button variant={"main"} className="rounded-sm bg-primary text-[#ffff]">Update Password</Button>
                         </div>
                     </Form>
                 </CardContent>

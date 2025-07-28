@@ -15,7 +15,7 @@ import ServiceAddCategoryModal from "@/components/modals/serviceAddCategoryModal
 
 export default function ServicePage() {
   const [searchText, setSearchText] = useState('')
-    const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const router = useRouter()
 
@@ -73,6 +73,9 @@ export default function ServicePage() {
 
   ]
 
+  const handleDeleteCategory = () => {
+
+  }
 
 
   const service_count = 456
@@ -159,17 +162,17 @@ export default function ServicePage() {
         <div className="mt-8">
           {/* Create New Category Button */}
           <button
-           onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsModalOpen(true)}
             className="bg-primary cursor-pointer text-white rounded-lg px-6 py-3 text-sm font-medium flex items-center gap-2"
           >
             <Plus className="h-4 w-4" />
             Create a new category
           </button>
-          <ServiceAddCategoryModal open={isModalOpen} onOpenChange={setIsModalOpen}/>
+          <ServiceAddCategoryModal open={isModalOpen} onOpenChange={setIsModalOpen} />
         </div>
       </div>
 
-  
+
     </div>
   )
 }

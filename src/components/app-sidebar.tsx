@@ -16,9 +16,11 @@ import {
 } from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
 import { AboutIcon, BookingIcon, BoostIcon, ChangePasswordIcon, DashboardIcon, DisputeIcon, FaqIcon, PayoutIcon, Promotions, ReferralIcon, ReportIcon, ServiceIcon, TermsIcon, TransactionIcon, UsersIcon } from "./custom-icons"
+import { useRouter } from "next/navigation"
+
 
 // This is sample data.
-export const data  = {
+export const data = {
     user: {
         name: "shadcn",
         email: "m@example.com",
@@ -39,7 +41,7 @@ export const data  = {
             url: "users",
             icon: UsersIcon,
         },
-     
+
         {
             name: "Bookings",
             title: "Manage bookings",
@@ -111,19 +113,19 @@ export const data  = {
                     title: "Terms & Conditions",
                     description: "Legal Policies and Agreements",
                     url: "terms&Conditions",
-                    icon:TermsIcon,
+                    icon: TermsIcon,
                 },
                 {
                     title: "About us",
                     description: "Company Information and Background",
                     url: "aboutUs",
-                    icon:AboutIcon,
+                    icon: AboutIcon,
                 },
                 {
                     title: "FAQ",
                     description: "Frequently Asked Questions",
                     url: "faq",
-                    icon:FaqIcon,
+                    icon: FaqIcon,
                 },
             ],
         },
@@ -131,7 +133,16 @@ export const data  = {
 
 }
 
+
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+    const router = useRouter()
+
+
+
+    const handleNavigate = () => {
+        router.push('/')
+    }
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader className="bg-[#1E1E1E]">
@@ -154,7 +165,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
 
             <SidebarFooter className="bg-[#1E1E1E]">
-                <Button className="bg-[#FF6600] hover:bg-[#ff6600b9] cursor-pointer">Log Out</Button>
+                <Button onClick={handleNavigate} className="bg-[#FF6600] hover:bg-[#ff6600b9] cursor-pointer">Log Out</Button>
             </SidebarFooter>
             <SidebarRail />
         </Sidebar>

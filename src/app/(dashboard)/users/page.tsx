@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 import { Search } from "lucide-react"
-import { Tabs,TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Pagination,
   PaginationContent,
@@ -35,18 +35,20 @@ import CustomModal from "@/components/modal/customModal"
 import UserDetailsPage from "@/components/user/user-details"
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-
+import Image from "next/image"
+import { verify } from "crypto"
+import UnverifiedUserDetails from "@/components/user/unverifed-user-details"
 
 
 interface User {
-  id: string
-  name: string
-  email: string
-  phone_number: string
-  location: string
-  avatar: string
+  id: string | number;
+  name: string;
+  email: string;
+  phone_number: string;
+  location: string;
+  avatar: string;
+  verified?: boolean;
 }
-
 
 const invoices: User[] = [
   {
@@ -54,70 +56,83 @@ const invoices: User[] = [
     "name": "Emma Johnson",
     "email": "emma.johnson@example.com",
     "phone_number": "+1 (555) 123-4567",
-    "location": "New York, USA"
+    "location": "New York, USA",
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+    "verified": true
   },
   {
     "id": 2,
     "name": "Carlos Mendoza",
     "email": "c.mendoza@example.com",
     "phone_number": "+52 55 1234 5678",
-    "location": "Mexico City, Mexico"
+    "location": "Mexico City, Mexico",
+    "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
+    "verified": true
   },
   {
     "id": 3,
     "name": "Priya Patel",
     "email": "priya.patel@example.com",
     "phone_number": "+91 98765 43210",
-    "location": "Mumbai, India"
+    "location": "Mumbai, India",
+    "avatar": "https://randomuser.me/api/portraits/women/2.jpg",
+    "verified": true
   },
   {
     "id": 4,
     "name": "James Wilson",
     "email": "j.wilson@example.co.uk",
     "phone_number": "+44 7700 123456",
-    "location": "London, UK"
+    "location": "London, UK",
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg"
   },
   {
     "id": 5,
     "name": "Sophie Martin",
     "email": "sophie.martin@example.fr",
     "phone_number": "+33 6 12 34 56 78",
-    "location": "Paris, France"
+    "location": "Paris, France",
+    "avatar": "https://randomuser.me/api/portraits/women/3.jpg"
   },
   {
     "id": 6,
     "name": "Liam Nguyen",
     "email": "liam.n@example.com",
     "phone_number": "+61 412 345 678",
-    "location": "Sydney, Australia"
+    "location": "Sydney, Australia",
+    "avatar": "https://randomuser.me/api/portraits/men/3.jpg"
   },
   {
     "id": 7,
     "name": "Olivia Kim",
     "email": "olivia.kim@example.co.kr",
     "phone_number": "+82 10-1234-5678",
-    "location": "Seoul, South Korea"
+    "location": "Seoul, South Korea",
+    "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
   },
   {
     "id": 8,
     "name": "Mohammed Al-Farsi",
     "email": "m.alfarsi@example.ae",
     "phone_number": "+971 50 123 4567",
-    "location": "Dubai, UAE"
+    "location": "Dubai, UAE",
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg"
   },
   {
     "id": 9,
     "name": "Aisha Abubakar",
     "email": "a.abubakar@example.ng",
     "phone_number": "+234 801 234 5678",
-    "location": "Lagos, Nigeria"
+    "location": "Lagos, Nigeria",
+    "avatar": "https://randomuser.me/api/portraits/women/5.jpg"
   },
   {
     "id": 10,
     "name": "Hiroshi Tanaka",
     "email": "hiroshi.t@example.jp",
     "phone_number": "+81 90-1234-5678",
-    "location": "Tokyo, Japan"
+    "location": "Tokyo, Japan",
+    "avatar": "https://randomuser.me/api/portraits/men/5.jpg"
   },
 ]
 
@@ -129,6 +144,7 @@ const UserPage = () => {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState("Users")
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenTwo, setIsOpenTwo] = useState(false)
 
   const [users, setUsers] = useState<User[]>(invoices)
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
@@ -161,7 +177,14 @@ const UserPage = () => {
   }, [activeTab, router])
 
 
+  const handleNavigate = (params) => {
 
+    if (params.message === 'verified_text') {
+      setIsOpen(!isOpen)
+    } else {
+      setIsOpenTwo(!isOpenTwo)
+    }
+  }
 
   return (
     <div className="container mx-auto py-10">
@@ -260,14 +283,28 @@ const UserPage = () => {
           {invoices?.map((user) => (
             <TableRow key={user.id}>
               <TableCell className="font-medium">{user.id}</TableCell>
-              <TableCell>{user.name}</TableCell>
+              <TableCell className="flex items-center gap-5 ">
+                <Image src={user?.avatar} alt="photo" width={50} height={50} className="w-[50px] h-[50px] rounded-full object-cover" />
+                <p> {user.name}</p>
+                {
+                  user.verified === true && <span className="ml-8">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.6 21.5L5.7 18.3L2.1 17.5L2.45 13.8L0 11L2.45 8.2L2.1 4.5L5.7 3.7L7.6 0.5L11 1.95L14.4 0.5L16.3 3.7L19.9 4.5L19.55 8.2L22 11L19.55 13.8L19.9 17.5L16.3 18.3L14.4 21.5L11 20.05L7.6 21.5ZM9.95 14.55L15.6 8.9L14.2 7.45L9.95 11.7L7.8 9.6L6.4 11L9.95 14.55Z" fill="#4285F4" />
+                    </svg>
+                  </span>
+                }
+
+
+              </TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.phone_number}</TableCell>
               <TableCell>{user.location}</TableCell>
               <TableCell className="text-right">
                 <div className="flex justify-end gap-2">
                   <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => handleNavigate({
+                      message: user.verified ? 'verified_text' : 'unverified_text'
+                    })}
                     className="cursor-pointer">
                     <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect y="0.5" width="37" height="37" rx="5" fill="#FFF3EB" />
@@ -347,7 +384,7 @@ const UserPage = () => {
       </div>
 
 
-      {/* modal component */}
+      {/* modal component(USER_DETAILS_PAGE) */}
       <CustomModal
         open={isOpen}
         setIsOpen={setIsOpen}
@@ -355,6 +392,17 @@ const UserPage = () => {
         maxWidth={"!max-w-[40vw]"}
       >
         <UserDetailsPage />
+      </CustomModal>
+
+
+      {/* modal component(Unverified_User_Details) */}
+      <CustomModal
+        open={isOpenTwo}
+        setIsOpen={setIsOpenTwo}
+        className={"p-2 max-h-[50vh]"}
+        maxWidth={"!max-w-[40vw]"}
+      >
+        <UnverifiedUserDetails />
       </CustomModal>
     </div>
   )

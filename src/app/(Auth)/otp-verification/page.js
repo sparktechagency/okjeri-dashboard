@@ -1,33 +1,46 @@
+
 "use client"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-
+import { useState, useRef } from "react";
 
 export default function Verification() {
-  const router=useRouter()
+  const router = useRouter()
   const [code, setCode] = useState(Array(6).fill(""));
   const [error, setError] = useState("");
+  const inputRefs = useRef([]);
 
   const handleChange = (val, i) => {
     if (!/^\d?$/.test(val)) return;
+    
     const updated = [...code];
     updated[i] = val;
     setCode(updated);
+
+    // Auto-focus to next input if a digit was entered
+    if (val && i < 5) {
+      inputRefs.current[i + 1].focus();
+    }
+  };
+
+  const handleKeyDown = (e, i) => {
+    // Handle backspace to move to previous input
+    if (e.key === 'Backspace' && !code[i] && i > 0) {
+      inputRefs.current[i - 1].focus();
+    }
   };
 
   const handleVerify = () => {
     const joined = code.join("");
     if (joined.length < 6 || code.includes("")) {
       setError("Please enter all 6 digits.");
-     
     } else {
       setError("");
       console.log("Verifying:", joined);
-      // Verification logic here
-       router.push("/set-password")
+      router.push("/set-password")
     }
   };
 
@@ -35,6 +48,15 @@ export default function Verification() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-lg py-20 bg-[#636363]/0.5">
         <CardHeader className="text-center space-y-2 pb-4">
+          <div className="flex justify-center">
+            <Image
+              src="/logo1.png"
+              alt="photo"
+              width={100}
+              height={100}
+              className="w-[120px]  object-cover"
+            />
+          </div>
           <h1 className="text-2xl font-semibold text-black">Verification code</h1>
           <p className="text-sm text-gray-600 max-w-xs mx-auto">
             We sent a reset link to <span className="font-medium">abidhasan@gmail.com</span>. Enter the 6-digit code.
@@ -46,11 +68,13 @@ export default function Verification() {
             {code.map((d, i) => (
               <Input
                 key={i}
+                ref={(el) => (inputRefs.current[i] = el)}
                 type="text"
                 inputMode="numeric"
                 maxLength={1}
                 value={d}
                 onChange={(e) => handleChange(e.target.value, i)}
+                onKeyDown={(e) => handleKeyDown(e, i)}
                 className="w-12 h-12 text-center text-lg font-medium border-gray-300"
               />
             ))}
@@ -59,7 +83,7 @@ export default function Verification() {
           {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
 
           <div className="flex justify-center">
-            <Button variant="main" onClick={handleVerify}>Verify Code</Button>
+            <Button variant="main" onClick={handleVerify} className="rounded-sm bg-primary text-[#ffff] mt-4">Verify Code</Button>
           </div>
 
           <p className="text-sm text-center text-gray-600 mt-4">
