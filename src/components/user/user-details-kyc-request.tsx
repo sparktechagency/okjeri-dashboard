@@ -155,7 +155,7 @@ const UserDetailsKycRequest = () => {
             <CustomModal
                 open={isOpenTwo}
                 setIsOpen={setIsOpenTwo}
-                className={"p-2 max-h-[30vh]"}
+                className={"p-2 max-h-[0vh]"}
                 maxWidth={"!max-w-[35vw]"}
             >
                 <UserNationalIdCard />
