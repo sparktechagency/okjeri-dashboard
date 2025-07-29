@@ -19,6 +19,7 @@ import UserDetailsKycRequest from '@/components/user/user-details-kyc-request'
 import UserDetailsAccepted from '@/components/user/user-details-accept'
 import UserRejectionKycRequest from '@/components/user/user-rejection-kyc-request'
 import KycRejectedDeclined from '@/components/user/kyc-rejected-declined'
+import Image from 'next/image'
 
 
 const UserReviewRequest = () => {
@@ -37,6 +38,7 @@ const UserReviewRequest = () => {
         }
     }
 
+
     const invoices = [
         {
             "id": 1,
@@ -44,7 +46,7 @@ const UserReviewRequest = () => {
             "email": "emma.johnson@example.com",
             "phone_number": "+1 (555) 123-4567",
             "location": "New York, USA",
-            "image": "https://randomuser.me/api/portraits/women/43.jpg"
+            "avatar": "https://randomuser.me/api/portraits/women/43.jpg"
         },
         {
             "id": 2,
@@ -52,7 +54,7 @@ const UserReviewRequest = () => {
             "email": "c.mendoza@example.com",
             "phone_number": "+52 55 1234 5678",
             "location": "Mexico City, Mexico",
-            "image": "https://randomuser.me/api/portraits/men/32.jpg"
+            "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
         },
         {
             "id": 3,
@@ -60,7 +62,7 @@ const UserReviewRequest = () => {
             "email": "priya.patel@example.com",
             "phone_number": "+91 98765 43210",
             "location": "Mumbai, India",
-            "image": "https://randomuser.me/api/portraits/women/65.jpg"
+            "avatar": "https://randomuser.me/api/portraits/women/65.jpg"
         },
         {
             "id": 4,
@@ -68,7 +70,7 @@ const UserReviewRequest = () => {
             "email": "j.wilson@example.co.uk",
             "phone_number": "+44 7700 123456",
             "location": "London, UK",
-            "image": "https://randomuser.me/api/portraits/men/22.jpg"
+            "avatar": "https://randomuser.me/api/portraits/men/22.jpg"
         },
         {
             "id": 5,
@@ -76,7 +78,7 @@ const UserReviewRequest = () => {
             "email": "sophie.martin@example.fr",
             "phone_number": "+33 6 12 34 56 78",
             "location": "Paris, France",
-            "image": "https://randomuser.me/api/portraits/women/33.jpg"
+            "avatar": "https://randomuser.me/api/portraits/women/33.jpg"
         },
         {
             "id": 6,
@@ -84,7 +86,7 @@ const UserReviewRequest = () => {
             "email": "liam.n@example.com",
             "phone_number": "+61 412 345 678",
             "location": "Sydney, Australia",
-            "image": "https://randomuser.me/api/portraits/men/75.jpg"
+            "avatar": "https://randomuser.me/api/portraits/men/75.jpg"
         },
         {
             "id": 7,
@@ -92,7 +94,7 @@ const UserReviewRequest = () => {
             "email": "olivia.kim@example.co.kr",
             "phone_number": "+82 10-1234-5678",
             "location": "Seoul, South Korea",
-            "image": "https://randomuser.me/api/portraits/women/28.jpg"
+            "avatar": "https://randomuser.me/api/portraits/women/28.jpg"
         },
         {
             "id": 8,
@@ -100,7 +102,7 @@ const UserReviewRequest = () => {
             "email": "m.alfarsi@example.ae",
             "phone_number": "+971 50 123 4567",
             "location": "Dubai, UAE",
-            "image": "https://randomuser.me/api/portraits/men/68.jpg"
+            "avatar": "https://randomuser.me/api/portraits/men/68.jpg"
         },
         {
             "id": 9,
@@ -108,7 +110,7 @@ const UserReviewRequest = () => {
             "email": "a.abubakar@example.ng",
             "phone_number": "+234 801 234 5678",
             "location": "Lagos, Nigeria",
-            "image": "https://randomuser.me/api/portraits/women/72.jpg"
+            "avatar": "https://randomuser.me/api/portraits/women/72.jpg"
         },
         {
             "id": 10,
@@ -116,9 +118,10 @@ const UserReviewRequest = () => {
             "email": "hiroshi.t@example.jp",
             "phone_number": "+81 90-1234-5678",
             "location": "Tokyo, Japan",
-            "image": "https://randomuser.me/api/portraits/men/55.jpg"
+            "avatar": "https://randomuser.me/api/portraits/men/55.jpg"
         },
-    ]
+    ];
+
 
 
 
@@ -168,7 +171,10 @@ const UserReviewRequest = () => {
                         {invoices?.map((user) => (
                             <TableRow key={user.id}>
                                 <TableCell className="font-medium">{user.id}</TableCell>
-                                <TableCell>{user.name}</TableCell>
+                                <TableCell className="flex items-center gap-5 ">
+                                    <Image src={user?.avatar} alt="photo" width={50} height={50} className="w-[50px] h-[50px] rounded-full object-cover" />
+                                    <p> {user.name}</p>
+                                </TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell>{user.phone_number}</TableCell>
                                 <TableCell>{user.location}</TableCell>
@@ -193,7 +199,7 @@ const UserReviewRequest = () => {
                                         </button>
                                         <button
                                             onClick={() => setIsOpenRej(!isOpenRej)}
-                                        className="cursor-pointer">
+                                            className="cursor-pointer">
                                             <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <rect width="34" height="38" rx="6" fill="#FFE8E8" />
                                                 <path d="M24 11H20.5L19.5 10H14.5L13.5 11H10V13H24M11 26C11 26.5304 11.2107 27.0391 11.5858 27.4142C11.9609 27.7893 12.4696 28 13 28H21C21.5304 28 22.0391 27.7893 22.4142 27.4142C22.7893 27.0391 23 26.5304 23 26V14H11V26Z" fill="#FF5353" />
@@ -243,6 +249,9 @@ const UserReviewRequest = () => {
             >
                 <UserRejectionKycRequest />
             </CustomModal>
+            
+
+            
             {/* modal component(USER_REJECTION_KEY_REQUEST) */}
             <CustomModal
                 open={isOpenRejTwo}
@@ -250,9 +259,9 @@ const UserReviewRequest = () => {
                 className={"p-2 max-h-[50vh]"}
                 maxWidth={"!max-w-[40vw]"}
             >
-                <KycRejectedDeclined 
-                 open={isOpenRejTwo}
-                setIsOpen={setIsOpenRejTwo}
+                <KycRejectedDeclined
+                    open={isOpenRejTwo}
+                    setIsOpen={setIsOpenRejTwo}
                 />
             </CustomModal>
         </div >

@@ -1,16 +1,16 @@
 "use client"
 
-import { Search, Filter, MoreHorizontal, Check } from "lucide-react"
+import { Search} from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import Image from "next/image"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { BookingModal } from "./modals/bookingModal"
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "./ui/pagination"
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "./ui/pagination"
+import CustomModal from "./modal/customModal"
+import BookingDetails from "./booking/booking_details"
+import BookingCancelReason from "./booking/booking_cancel_reson"
 
 
 const bookingData = [
@@ -128,14 +128,8 @@ const getStatusBadge = (status: string) => {
 
 export default function ServiceBookingTable() {
     const [searchText, setSearchText] = useState('')
-    const [startIndex, setStartIndex] = useState(0)
-    const [endIndex, setIndex] = useState()
-    const [selectedFilter, setSelectedFilter] = useState<string>("")
-    const router = useRouter()
-
-    const handleSearchChange = (event) => {
-        setSearchText(event.target.value);
-    };
+    const [isOpen, setIsOpen] = useState(false)
+    const [isOpenRej, setIsOpenRej] = useState(false)
 
 
 
@@ -158,7 +152,7 @@ export default function ServiceBookingTable() {
                 </div>
 
                 <div className="">
-                    <Select onValueChange={(value) => setSelectedFilter(value)}>
+                    <Select>
                         <SelectTrigger className="w-[180px]">
                             <div className="flex items-center gap-2">
                                 {/* Filter icon */}
@@ -211,7 +205,7 @@ export default function ServiceBookingTable() {
                                     <div className="flex items-center gap-3">
                                         <div className="relative">
                                             <Image
-                                                src={booking.user.avatar || "/placeholder.svg"}
+                                                src={booking.user.avatar}
                                                 alt={booking.user.name}
                                                 width={32}
                                                 height={32}
@@ -231,7 +225,7 @@ export default function ServiceBookingTable() {
                                     <div className="flex items-center gap-3">
                                         <div className="relative">
                                             <Image
-                                                src={booking.provider.avatar || "/placeholder.svg"}
+                                                src={booking.provider.avatar}
                                                 alt={booking.provider.name}
                                                 width={32}
                                                 height={32}
@@ -257,12 +251,21 @@ export default function ServiceBookingTable() {
                                     <span className="text-gray-900 text-sm font-bold">{booking.price}</span>
                                 </TableCell>
                                 <TableCell className="py-4 px-4">{getStatusBadge(booking.status)}</TableCell>
+
                                 <TableCell className="text-right">
                                     <div className="flex justify-end gap-2">
-                                        {/* booking modal */}
-                                        <BookingModal />
+                                        <button
+                                            onClick={() => setIsOpen(!isOpen)}
+                                            className="cursor-pointer">
+                                            <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect y="0.5" width="37" height="37" rx="5" fill="#FFF3EB" />
+                                                <path d="M18.5 15.8C17.632 15.8 16.7996 16.1371 16.1858 16.7373C15.5721 17.3374 15.2273 18.1513 15.2273 19C15.2273 19.8487 15.5721 20.6626 16.1858 21.2627C16.7996 21.8629 17.632 22.2 18.5 22.2C19.368 22.2 20.2004 21.8629 20.8142 21.2627C21.4279 20.6626 21.7727 19.8487 21.7727 19C21.7727 18.1513 21.4279 17.3374 20.8142 16.7373C20.2004 16.1371 19.368 15.8 18.5 15.8ZM18.5 24.3333C17.0534 24.3333 15.666 23.7714 14.6431 22.7712C13.6201 21.771 13.0455 20.4145 13.0455 19C13.0455 17.5855 13.6201 16.229 14.6431 15.2288C15.666 14.2286 17.0534 13.6667 18.5 13.6667C19.9466 13.6667 21.334 14.2286 22.3569 15.2288C23.3799 16.229 23.9545 17.5855 23.9545 19C23.9545 20.4145 23.3799 21.771 22.3569 22.7712C21.334 23.7714 19.9466 24.3333 18.5 24.3333ZM18.5 11C13.0455 11 8.38727 14.3173 6.5 19C8.38727 23.6827 13.0455 27 18.5 27C23.9545 27 28.6127 23.6827 30.5 19C28.6127 14.3173 23.9545 11 18.5 11Z" fill="#F96D10" />
+                                            </svg>
+                                        </button>
 
-                                        <button className="cursor-pointer">
+                                        <button
+                                            onClick={() => setIsOpenRej(!isOpenRej)}
+                                            className="cursor-pointer">
                                             <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <rect width="34" height="38" rx="6" fill="#FFE8E8" />
                                                 <path d="M24 11H20.5L19.5 10H14.5L13.5 11H10V13H24M11 26C11 26.5304 11.2107 27.0391 11.5858 27.4142C11.9609 27.7893 12.4696 28 13 28H21C21.5304 28 22.0391 27.7893 22.4142 27.4142C22.7893 27.0391 23 26.5304 23 26V14H11V26Z" fill="#FF5353" />
@@ -301,6 +304,28 @@ export default function ServiceBookingTable() {
                 </Pagination>
             </div>
 
+
+
+            {/* modal component(BOOKING_DETAILS) */}
+            <CustomModal
+                open={isOpen}
+                setIsOpen={setIsOpen}
+                className={"p-0 max-h-[0vh]"}
+                maxWidth={"!max-w-[45vw]"}>
+                <BookingDetails />
+            </CustomModal>
+
+
+
+
+            {/* modal component(BOOKING_DELETE) */}
+            <CustomModal
+                open={isOpenRej}
+                setIsOpen={setIsOpenRej}
+                className={"p-0 max-h-[0vh]"}
+                maxWidth={"!max-w-[35vw]"}>
+                <BookingCancelReason />
+            </CustomModal>
         </div>
     )
 }

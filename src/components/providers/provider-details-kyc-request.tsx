@@ -1,18 +1,44 @@
 "use client"
-
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import { Button } from "../ui/button";
 import { useState } from "react";
 import CustomModal from "../modal/customModal";
-import NotificationSend from "./notification-send";
+import ProviderNationalIdCard from "./provider-national-id-card";
+import ProviderRejectionKycRequest from "./provider-rejection-kyc-request";
+import ProviderDetailsAccepted from "./provider-details-accept";
 
 
 
-const UnverifiedUserDetails = () => {
-    const [isOpen, setIsOpen] = useState(false)
+
+
+
+
+const ProviderDetailsKycRequest = () => {
+    const [isOpenTwo, setIsOpenTwo] = useState(false)
+    const [isOpenReject, setIsOpenReject] = useState(false)
+    const [isOpenApproved, setIsOpenApproved] = useState(false)
+
 
     return (
         <div>
-            <h1 className="text-center text-[24px] pb-4">User details</h1>
+            <h1 className="text-center text-[24px] pb-4">KYC request</h1>
+
+
+            <div className="flex flex-col items-center text-center">
+                <Avatar className="w-24 h-24 mb-4 border-2 border-gray-200">
+                    <AvatarImage src="/photo4.jpg" alt="Md. Abid Hasan" />
+                    <AvatarFallback>MA</AvatarFallback>
+                </Avatar>
+                <div className="flex items-center gap-2">
+                    <h2 className="text-xl font-semibold">Md. Abid Hasan</h2>
+                    <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.6 21L5.7 17.8L2.1 17L2.45 13.3L0 10.5L2.45 7.7L2.1 4L5.7 3.2L7.6 0L11 1.45L14.4 0L16.3 3.2L19.9 4L19.55 7.7L22 10.5L19.55 13.3L19.9 17L16.3 17.8L14.4 21L11 19.55L7.6 21ZM9.95 14.05L15.6 8.4L14.2 6.95L9.95 11.2L7.8 9.1L6.4 10.5L9.95 14.05Z" fill="#4285F4" />
+                    </svg>
+
+                </div>
+            </div>
 
 
 
@@ -68,41 +94,102 @@ const UnverifiedUserDetails = () => {
                     </div>
 
                     <div className="border rounded-xl p-4 flex-1 relative">
-                        <div className="flex flex-col gap-2">
+                        <div className="flex items-center justify-between mb-2">
                             <Badge
-
-                                className="bg-[#9747FF] hover:bg-[#9747FF]  px-8 py-4">Unverified</Badge>
-
-                            <button
-                                onClick={() => setIsOpen(!isOpen)}
-                                className="bg-[#9747FF] hover:bg-[#9747FF] hover:opacity-90 text-[#ffff] flex items-center gap-3 py-6 rounded-2xl text-center px-8 cursor-pointer">
-                                Send notification
-                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0.181824 10.7425L8.37436 2.55001L2.0104 2.55001L2.0104 0.550313H11.7883L11.7883 10.3282L9.78858 10.3282L9.78858 3.96422L1.59604 12.1568L0.181824 10.7425Z" fill="white" />
+                                onClick={() => setIsOpenTwo(!isOpenTwo)}
+                                className="bg-[#9747FF] hover:bg-[#9747FF] hover:opacity-90 cursor-pointer">In review</Badge>
+                            <span
+                                onClick={() => setIsOpenTwo(!isOpenTwo)}
+                                className="hover:bg-primary border p-2 rounded-full cursor-pointer group transition-colors duration-200">
+                                <svg
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 10 10"
+                                    fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="text-black group-hover:text-white transition-colors duration-200">  {/* Added text color classes */}
+                                    <path
+                                        d="M0.206851 8.69206L6.58485 2.31406L1.63042 2.31406L1.63042 0.757273H9.24262L9.24262 8.36947H7.68583L7.68583 3.41505L1.30783 9.79305L0.206851 8.69206Z"
+                                    />  {/* Removed fill attribute to inherit from SVG */}
                                 </svg>
+                            </span>
 
-                            </button>
                         </div>
 
-
+                        <div className="flex gap-2 mt-2">
+                            <Image
+                                src="/nationalD/id-card-one.png"
+                                alt="KYC front"
+                                width={160}
+                                height={80}
+                                className="rounded-md object-cover"
+                            />
+                            <Image
+                                src="/nationalD/id-card-two.png"
+                                alt="KYC back"
+                                width={160}
+                                height={80}
+                                className="rounded-md object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            {/* modal component(Notification_Send) */}
-            <CustomModal
-                open={isOpen}
-                setIsOpen={setIsOpen}
-                className={"p-2 max-h-[50vh]"}
-                maxWidth={"!max-w-[30vw]"}
-            >
-                {/* <NotificationSend /> */}
+            <div className="w-[90%] mx-auto flex justify-center items-center pb-4  gap-4">
+                <Button
+                    onClick={() => setIsOpenReject(!isOpenReject)}
+                    className="w-[50%] mx-auto bg-[#EF4444] hover:bg-[#EF4444] hover:opacity-90  flex justify-center items-center rounded-full text-center py-6 text-[16px] cursor-pointer">
+                    Reject
+                </Button>
 
-                user notification
+                <Button
+                    onClick={() => setIsOpenApproved(!isOpenApproved)}
+                    className="w-[50%] mx-auto bg-[#00B400] hover:bg-[#00B400] hover:opacity-90  flex justify-center items-center rounded-full text-center py-6 text-[16px] cursor-pointer">
+                    Approve
+                </Button>
+            </div>
+
+
+
+            {/* modal component(USER_NATIONAL_ID_CURD) */}
+            <CustomModal
+                open={isOpenTwo}
+                setIsOpen={setIsOpenTwo}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[35vw]"}
+            >
+                <ProviderNationalIdCard />
+            </CustomModal>
+
+
+            {/* modal component(User_Rejection_Kyc_Request)*/}
+            <CustomModal
+                open={isOpenReject}
+                setIsOpen={setIsOpenReject}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[35vw]"}
+            >
+                <ProviderRejectionKycRequest />
+            </CustomModal>
+
+
+
+            {/* modal component(User_Approved_Kyc_Request)*/}
+            <CustomModal
+                open={isOpenApproved}
+                setIsOpen={setIsOpenApproved}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[35vw]"}
+            >
+                <ProviderDetailsAccepted
+                    open={isOpenApproved}
+                    setIsOpen={setIsOpenApproved}
+                />
             </CustomModal>
         </div>
     )
 }
 
-export default UnverifiedUserDetails
+export default ProviderDetailsKycRequest

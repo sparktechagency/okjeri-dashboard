@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { User, Mail, Calendar, Clock, Flag, Download } from "lucide-react";
 import Image from "next/image";
 
-export default function ReportOfUser() {
+export default function ReportOfProvider() {
     
     const transactions = [
         { date: "01-01-2025", type: "Transaction", from: "0x74....f44e", to: "0x74....f44e", amount: 500.0 },

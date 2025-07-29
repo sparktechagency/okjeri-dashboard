@@ -36,7 +36,17 @@ export function NavProjects({ projects }: NavProjectsProps) {
     <SidebarGroup>
       <SidebarMenu>
         {projects.map((item) => {
-          const isActive = pathname === `/${item.url}` || pathname.startsWith(`/${item.url}/`)
+          // Enhanced isActive logic for Users item
+          const isUsersRoute = item.url === 'users'
+          const isActive = 
+            pathname === `/${item.url}` || 
+            pathname.startsWith(`/${item.url}/`) ||
+            (isUsersRoute && (
+              pathname.startsWith('/provider') || 
+              pathname.startsWith('/providers') ||
+              pathname.startsWith('/provider/') ||
+              pathname.startsWith('/providers/')
+            ))
           
           return (
             <SidebarMenuItem key={item.name}>
@@ -45,7 +55,11 @@ export function NavProjects({ projects }: NavProjectsProps) {
                   <SidebarMenuButton asChild>
                     <Link
                       href={`/${item.url}`}
-                      className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-black hover:bg-opacity-30 ${isActive ? "bg-[#FF6600] border-l-4" : "text-[#fff] border-l-0"}`}
+                      className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-black hover:bg-opacity-30 ${
+                        isActive 
+                          ? "bg-[#FF6600] border-l-4 border-[#FF6600]" 
+                          : "text-[#fff] border-l-0"
+                      }`}
                     >
                       <item.icon className="h-5 w-5" />
                       {!isCollapsed && (

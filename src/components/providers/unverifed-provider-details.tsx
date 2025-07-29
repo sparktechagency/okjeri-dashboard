@@ -3,11 +3,13 @@
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import CustomModal from "../modal/customModal";
-import NotificationSend from "./notification-send";
+import ProviderNotificationSend from "./provider-notification-send";
 
 
 
-const UnverifiedUserDetails = () => {
+
+
+const UnverifiedProviderDetails = () => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -97,12 +99,10 @@ const UnverifiedUserDetails = () => {
                 className={"p-2 max-h-[50vh]"}
                 maxWidth={"!max-w-[30vw]"}
             >
-                {/* <NotificationSend /> */}
-
-                user notification
+                <ProviderNotificationSend />
             </CustomModal>
         </div>
     )
 }
 
-export default UnverifiedUserDetails
+export default UnverifiedProviderDetails
