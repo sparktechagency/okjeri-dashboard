@@ -2,21 +2,25 @@
 "use client"
 
 import { useState } from "react"
-import { Search, Plus, Edit, Trash2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Search, Plus } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { CardContent } from "@/components/ui/card"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import ServiceAddCategoryModal from "@/components/modals/serviceAddCategoryModal"
+import CustomModal from "@/components/modal/customModal"
+import CreateNewCategorie from "@/components/services/create_new_categorie"
+import EditCatrgorie from "@/components/services/edit_catrgorie"
+import DeleteCategorie from "@/components/services/delete-categorie"
+
 
 
 
 
 export default function ServicePage() {
   const [searchText, setSearchText] = useState('')
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
+  const [isOpen, setIsOpen] = useState(false)
+  const [isOpenTwo, setIsOpenTwo] = useState(false)
+  const [isOpenThree, setIsOpenThree] = useState(false)
   const router = useRouter()
 
   const categories = [
@@ -131,7 +135,9 @@ export default function ServicePage() {
                 <div className="bg-orange-500 rounded-xl text-white px-3 py-2 mt-2 flex items-center justify-between">
                   <span className="text-sm font-medium">{index + 1}. {category.name}</span>
                   <div className="flex items-center gap-1">
-                    <button onClick={() => handleEditCategory(category.id)} className="cursor-pointer">
+                    <button
+                      onClick={() => setIsOpenTwo(!isOpenTwo)}
+                      className="cursor-pointer">
                       <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect y="-0.0012207" width="38.0025" height="38.0025" rx="6" fill="white" />
                         <path d="M27.71 14.0413C28.1 13.6513 28.1 13.0013 27.71 12.6313L25.37 10.2913C25 9.90128 24.35 9.90128 23.96 10.2913L22.12 12.1213L25.87 15.8713M10 24.2513V28.0013H13.75L24.81 16.9313L21.06 13.1813L10 24.2513Z" fill="#00B400" />
@@ -139,7 +145,7 @@ export default function ServicePage() {
 
                     </button>
                     <button
-                      onClick={() => handleDeleteCategory(category.id)}
+                      onClick={() => setIsOpenThree(!isOpenThree)}
                       className="cursor-pointer"
                     >
                       <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -155,22 +161,55 @@ export default function ServicePage() {
           ))}
         </div>
 
-
-
-
-
         <div className="mt-8">
           {/* Create New Category Button */}
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsOpen(!isOpen)}
             className="bg-primary cursor-pointer text-white rounded-lg px-6 py-3 text-sm font-medium flex items-center gap-2"
           >
             <Plus className="h-4 w-4" />
             Create a new category
           </button>
-          <ServiceAddCategoryModal open={isModalOpen} onOpenChange={setIsModalOpen} />
         </div>
       </div>
+
+
+
+
+      {/* modal component(CREATE_CATEGORIES) */}
+      <CustomModal
+        open={isOpen}
+        setIsOpen={setIsOpen}
+        className={"p-2 max-h-[50vh]"}
+        maxWidth={"!max-w-[30vw]"}
+      >
+        <CreateNewCategorie />
+      </CustomModal>
+
+
+
+      {/* modal component(EDIT_CATEGORIES) */}
+      <CustomModal
+        open={isOpenTwo}
+        setIsOpen={setIsOpenTwo}
+        className={"p-2 max-h-[50vh]"}
+        maxWidth={"!max-w-[30vw]"}
+      >
+        <EditCatrgorie />
+      </CustomModal>
+
+
+
+
+      {/* modal component(DELETE_CATEGORIES) */}
+      <CustomModal
+        open={isOpenThree}
+        setIsOpen={setIsOpenThree}
+        className={"p-2 max-h-[50vh]"}
+        maxWidth={"!max-w-[30vw]"}
+      >
+        <DeleteCategorie />
+      </CustomModal>
 
 
     </div>
