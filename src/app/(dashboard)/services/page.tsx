@@ -106,7 +106,7 @@ export default function ServicePage() {
             />
           </div>
           <button onClick={RequestedServices} className="cursor-pointer bg-primary text-white rounded-full px-6 h-12 text-sm font-medium">
-            Service Requests (00)
+            Service Requests (10)
           </button>
         </div>
 

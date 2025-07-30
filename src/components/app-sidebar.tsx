@@ -96,7 +96,7 @@ export const data = {
     },
     {
       name: "Boost control",
-      title: "Service Visibility Booster",
+      title: "Boosted profiles",
       url: "boostControl",
       icon: BoostIcon,
     },
