@@ -208,7 +208,10 @@ export default function ServicePage() {
         className={"p-2 max-h-[50vh]"}
         maxWidth={"!max-w-[30vw]"}
       >
-        <DeleteCategorie />
+        <DeleteCategorie 
+         open={isOpenThree}
+        setIsOpen={setIsOpenThree}
+        />
       </CustomModal>
 
 

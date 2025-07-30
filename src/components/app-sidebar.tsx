@@ -90,7 +90,7 @@ export const data = {
     },
     {
       name: "Promotions",
-      title: "Marketing Campaign Manager",
+      title: "Promotions",
       url: "promotions",
       icon: Promotions,
     },
