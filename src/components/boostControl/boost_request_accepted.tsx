@@ -12,7 +12,7 @@ export default function BoostRequestAccepted({ open, setIsOpen }: BoostRequestAc
 
   return (
     <div>
-      <h1 className="text-center text-[24px] pb-4">Service request</h1>
+      <h1 className="text-center text-[24px] pb-4">Boosting request</h1>
 
 
       <div className="flex flex-col items-center justify-center  bg-white p-4">
@@ -24,7 +24,7 @@ export default function BoostRequestAccepted({ open, setIsOpen }: BoostRequestAc
 
           <h2 className="text-3xl font-semibold text-gray-900">Request accepted</h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Now this provider’s service will be on the top of the search results.
+            Now this provider’s service will be on the top of <br /> the search results.
           </p>
           <Button
             onClick={() => setIsOpen(!open)}

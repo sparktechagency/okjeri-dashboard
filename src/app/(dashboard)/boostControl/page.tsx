@@ -10,6 +10,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import Image from "next/image"
+import CustomModal from "@/components/modal/customModal"
+import ProviderDetailsOne from "@/components/boostControl/provider_details_one"
+import RejectBoostingRequest from "@/components/boostControl/reject_boosting_request"
 
 interface boostDataProps {
   id: string
@@ -109,6 +112,7 @@ const BoostControlPage = () => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenTwo, setIsOpenTwo] = useState(false)
+  const [controlledItems, setControlledItems] = useState<Record<string, boolean>>({})
 
   const [users, setUsers] = useState<boostDataProps[]>(boostData)
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
@@ -126,15 +130,21 @@ const BoostControlPage = () => {
   const handlePriceControl = () => {
     router.push('/pricingControl')
   }
-  
+
 
   const handleBoostingRequests = () => {
     router.push('/boostingRequests')
   }
-  
+
+  const handleControl = (id: string) => {
+    setControlledItems(prev => ({
+      ...prev,
+      [id]: !prev[id] // toggle the control state for this specific item
+    }))
+  }
 
 
- 
+
 
 
 
@@ -164,9 +174,9 @@ const BoostControlPage = () => {
             Pricing controls
           </button>
 
-          <button 
-          onClick={handleBoostingRequests}
-          className="cursor-pointer px-6 py-4 bg-[#FF6600] rounded-full text-white">
+          <button
+            onClick={handleBoostingRequests}
+            className="cursor-pointer px-6 py-4 bg-[#FF6600] rounded-full text-white">
             Requests (10)
           </button>
         </div>
@@ -208,7 +218,7 @@ const BoostControlPage = () => {
               <TableCell className="text-right">
                 <div className="flex justify-end gap-2">
                   <button
-
+                    onClick={() => setIsOpen(!isOpen)}
                     className="cursor-pointer">
                     <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect y="0.5" width="37" height="37" rx="5" fill="#FFF3EB" />
@@ -217,63 +227,69 @@ const BoostControlPage = () => {
                   </button>
 
 
-                  <button
-
-                    className="cursor-pointer">
-                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="0.5" y="0.5" width="37" height="37" rx="5" fill="#EBF4FF" />
-                      <path d="M21.3333 27V11H26V27H21.3333ZM12 27V11H16.6667V27H12Z" fill="#006FFF" />
-                    </svg>
-
-                  </button>
-
-                  {/* Delete Popover and Button */}
-                  <Popover
-                    open={openPopoverId === item.id}
-                    onOpenChange={(open) => setOpenPopoverId(open ? item.id : null)}
-                  >
-                    <PopoverTrigger asChild>
-                      <button className="cursor-pointer">
-                        <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect width="34" height="38" rx="6" fill="#FFE8E8" />
-                          <path d="M24 11H20.5L19.5 10H14.5L13.5 11H10V13H24M11 26C11 26.5304 11.2107 27.0391 11.5858 27.4142C11.9609 27.7893 12.4696 28 13 28H21C21.5304 28 22.0391 27.7893 22.4142 27.4142C22.7893 27.0391 23 26.5304 23 26V14H11V26Z" fill="#FF5353" />
+                  {/* CONTROL FUNCTIONALITY */}
+                  {
+                    controlledItems[item.id] ? (
+                      <button
+                        onClick={() => handleControl(item.id)}
+                        className="cursor-pointer"
+                      >
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="0.5" y="0.5" width="37" height="37" rx="5" fill="#F2E8FF" />
+                          <path d="M12.5 11V27L25.5 19L12.5 11Z" fill="#9747FF" />
                         </svg>
                       </button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-3 text-sm" align="end">
-                      <div className="flex items-center gap-2">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M7 0.946045C3.61758 0.946045 0.875 3.68862 0.875 7.07104C0.875 10.4535 3.61758 13.196 7 13.196C10.3824 13.196 13.125 10.4535 13.125 7.07104C13.125 3.68862 10.3824 0.946045 7 0.946045ZM6.5625 4.11792C6.5625 4.05776 6.61172 4.00854 6.67188 4.00854H7.32812C7.38828 4.00854 7.4375 4.05776 7.4375 4.11792V7.83667C7.4375 7.89683 7.38828 7.94604 7.32812 7.94604H6.67188C6.61172 7.94604 6.5625 7.89683 6.5625 7.83667V4.11792ZM7 10.1335C6.82827 10.13 6.66476 10.0594 6.54455 9.93667C6.42434 9.81398 6.35701 9.64906 6.35701 9.47729C6.35701 9.30553 6.42434 9.14061 6.54455 9.01792C6.66476 8.89523 6.82827 8.82455 7 8.82104C7.17173 8.82455 7.33524 8.89523 7.45545 9.01792C7.57566 9.14061 7.64299 9.30553 7.64299 9.47729C7.64299 9.64906 7.57566 9.81398 7.45545 9.93667C7.33524 10.0594 7.17173 10.13 7 10.1335Z" fill="#FAAD14" />
+                    ) : (
+                      <button
+                        onClick={() => handleControl(item.id)}
+                        className="cursor-pointer"
+                      >
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="0.5" y="0.5" width="37" height="37" rx="5" fill="#EBF4FF" />
+                          <path d="M21.3333 27V11H26V27H21.3333ZM12 27V11H16.6667V27H12Z" fill="#006FFF" />
                         </svg>
+                      </button>
+                    )
+                  }
 
-                        <span>Are you sure to delete this user?</span>
-                      </div>
-                      <div className="mt-2 flex justify-end gap-2">
-                        <Button variant="outline" size="sm" onClick={() => setOpenPopoverId(null)} className="h-8 px-3">
-                          No
-                        </Button>
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={() => handleDeleteUser(item.id)}
-                          className="h-8 px-3"
-                        >
-                          Yes
-                        </Button>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
+
+                  <button
+                    onClick={() => setIsOpenTwo(!isOpenTwo)}
+                    className="cursor-pointer">
+                    <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="34" height="38" rx="6" fill="#FFE8E8" />
+                      <path d="M24 11H20.5L19.5 10H14.5L13.5 11H10V13H24M11 26C11 26.5304 11.2107 27.0391 11.5858 27.4142C11.9609 27.7893 12.4696 28 13 28H21C21.5304 28 22.0391 27.7893 22.4142 27.4142C22.7893 27.0391 23 26.5304 23 26V14H11V26Z" fill="#FF5353" />
+                    </svg>
+                  </button>
                 </div>
-
-
-
-
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
 
+      {/* modal component(BOOSTING_DETAILS_ONE) */}
+      <CustomModal
+        open={isOpen}
+        setIsOpen={setIsOpen}
+        className={"p-2 max-h-[0vh]"}
+        maxWidth={"!max-w-[30vw]"}
+      >
+        <ProviderDetailsOne />
+      </CustomModal>
+
+
+
+
+      {/* modal component(BOOSTING_REJ) */}
+      <CustomModal
+        open={isOpenTwo}
+        setIsOpen={setIsOpenTwo}
+        className={"p-2 max-h-[0vh]"}
+        maxWidth={"!max-w-[30vw]"}
+      >
+        <RejectBoostingRequest />
+      </CustomModal>
 
 
     </div>

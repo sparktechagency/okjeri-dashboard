@@ -5,11 +5,12 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import CustomModal from "../modal/customModal"
 import BoostingDeclined from "./Boosting_declined"
+import CustomModal from "../modal/customModal"
 
 
-export default function RejectBoosting() {
+
+export default function RejectBoostingRequest() {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -29,14 +30,14 @@ export default function RejectBoosting() {
                     <Button
                         onClick={() => setIsOpen(!isOpen)}
                         className="w-full bg-primary hover:bg-primary hover:opacity-90  flex justify-center items-center rounded-full text-center py-6  text-[16px] cursor-pointer">
-                        Submit
+                       Reject
                     </Button>
                 </div>
             </div>
 
 
 
-            {/* modal component(USER_NATIONAL_ID_CURD) */}
+            {/* modal component() */}
             <CustomModal
                 open={isOpen}
                 setIsOpen={setIsOpen}
@@ -51,6 +52,5 @@ export default function RejectBoosting() {
         </div>
     )
 }
-
 
 

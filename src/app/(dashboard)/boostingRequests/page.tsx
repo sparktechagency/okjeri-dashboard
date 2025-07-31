@@ -18,6 +18,7 @@ import CustomModal from '@/components/modal/customModal'
 import Image from 'next/image'
 import BoostRequestAccepted from '@/components/boostControl/boost_request_accepted'
 import RejectBoosting from '@/components/boostControl/reject_boosting'
+import ProviderDetails from '@/components/boostControl/provider_details'
 
 
 const BoostingRequests = () => {
@@ -214,6 +215,19 @@ const BoostingRequests = () => {
                     </TableBody>
                 </Table>
             </div>
+
+
+            {/* modal component(BOOSTING_DETAILS) */}
+            <CustomModal
+                open={issOpenUserKyc}
+                setIsOpen={setIsOpenUserKyc}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[30vw]"}
+            >
+                <ProviderDetails />
+            </CustomModal>
+
+
 
 
             {/* modal component(BOOSTING_ACCEPTED) */}

@@ -252,7 +252,7 @@ const UserReviewRequest = () => {
             
 
             
-            {/* modal component(USER_REJECTION_KEY_REQUEST) */}
+            {/* modal component(USER_REJECTION_DECLINED) */}
             <CustomModal
                 open={isOpenRejTwo}
                 setIsOpen={setIsOpenRejTwo}
