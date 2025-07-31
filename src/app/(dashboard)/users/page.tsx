@@ -176,7 +176,7 @@ const UserPage = () => {
   }, [activeTab, router])
 
 
-  const handleNavigate = (params) => {
+  const handleNavigate = (params:any) => {
 
     if (params.message === 'verified_text') {
       setIsOpen(!isOpen)
