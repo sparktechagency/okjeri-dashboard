@@ -20,27 +20,27 @@ export default function PromotionsPage() {
     {
       "id": 1,
       "name": "Classic Haircut",
-      "image": "/photo3.jpg"
+      "image": "/photo5.png"
     },
     {
       "id": 2,
       "name": "Beard Trim",
-      "image": "/photo2.jpg"
+      "image": "/photo5.png"
     },
     {
       "id": 3,
       "name": "Facial Cleanup",
-      "image": "/photo3.jpg"
+      "image": "/photo5.png"
     },
     {
       "id": 4,
       "name": "Hair Coloring",
-      "image": "/photo3.jpg"
+      "image": "/photo5.png"
     },
     {
       "id": 5,
       "name": "Shampoo & Wash",
-      "image": "/photo3.jpg"
+      "image": "/photo5.png"
     },
     {
       "id": 6,

@@ -87,7 +87,7 @@ export default function BookingDetails() {
                             <path d="M11 0C12.4587 0 13.8576 0.579462 14.8891 1.61091C15.9205 2.64236 16.5 4.04131 16.5 5.5C16.5 6.95869 15.9205 8.35764 14.8891 9.38909C13.8576 10.4205 12.4587 11 11 11C9.54131 11 8.14236 10.4205 7.11091 9.38909C6.07946 8.35764 5.5 6.95869 5.5 5.5C5.5 4.04131 6.07946 2.64236 7.11091 1.61091C8.14236 0.579462 9.54131 0 11 0ZM11 13.75C17.0775 13.75 22 16.2113 22 19.25V22H0V19.25C0 16.2113 4.9225 13.75 11 13.75Z" fill="#FF6600" />
                         </svg>
 
-                        <h2 className="font-semibold text-lg">User details</h2>
+                        <h2 className="font-semibold text-lg">Provider details</h2>
                     </div>
                     <div className="border rounded-xl p-4 flex-1 ">
                         <Avatar className="w-24 h-24 mb-4 border-2 border-gray-200">

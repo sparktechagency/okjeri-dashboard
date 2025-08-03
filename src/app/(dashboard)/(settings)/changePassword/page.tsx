@@ -14,7 +14,7 @@ export default function ChangePasswordPage() {
   const [activeTab, setActiveTab] = useState("editProfile")
 
   return (
-    <div className="h-[70vh] flex justify-center  p-4">
+    <div className="h-[70vh] flex justify-center  pt-20">
       <div className="w-full max-w-6xl rounded-xl ">
         <CardHeader className="flex flex-col items-center p-6 pb-4">
           <div className="relative mb-4">
