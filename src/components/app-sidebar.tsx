@@ -84,7 +84,7 @@ export const data = {
     },
     {
       name: "Dispute management",
-      title: "Conflict Resolution Center",
+      title: "Dispute management",
       url: "disputeManagement",
       icon: DisputeIcon,
     },
