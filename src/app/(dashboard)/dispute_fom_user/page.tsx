@@ -228,7 +228,7 @@ const DisputeFomUser = () => {
                         <div className="flex gap-3 overflow-x-auto pb-2">
                             <div className="flex-shrink-0">
                                 <Image
-                                    src="/placeholder.svg?height=80&width=80"
+                                    src="/disput/photo1.png"
                                     alt="Evidence photo 1"
                                     width={80}
                                     height={80}
@@ -237,7 +237,7 @@ const DisputeFomUser = () => {
                             </div>
                             <div className="flex-shrink-0">
                                 <Image
-                                    src="/placeholder.svg?height=80&width=80"
+                                    src="/disput/photo2.png"
                                     alt="Evidence photo 2"
                                     width={80}
                                     height={80}
@@ -246,7 +246,7 @@ const DisputeFomUser = () => {
                             </div>
                             <div className="flex-shrink-0">
                                 <Image
-                                    src="/placeholder.svg?height=80&width=80"
+                                    src="/disput/photo3.png"
                                     alt="Evidence photo 3"
                                     width={80}
                                     height={80}
@@ -255,7 +255,7 @@ const DisputeFomUser = () => {
                             </div>
                             <div className="flex-shrink-0">
                                 <Image
-                                    src="/placeholder.svg?height=80&width=80"
+                                    src="/disput/photo4.png"
                                     alt="Evidence photo 4"
                                     width={80}
                                     height={80}
@@ -264,7 +264,7 @@ const DisputeFomUser = () => {
                             </div>
                             <div className="flex-shrink-0">
                                 <Image
-                                    src="/placeholder.svg?height=80&width=80"
+                                    src="/disput/photo5.png"
                                     alt="Evidence photo 5"
                                     width={80}
                                     height={80}
@@ -275,7 +275,7 @@ const DisputeFomUser = () => {
                     </div>
 
                     {/* Action Section */}
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center bg-gray-100 py-3 px-3 rounded-full cursor-pointer">
                         <h2 className="text-sm font-medium text-gray-700">Action</h2>
                         <ChevronRight className="h-5 w-5 text-gray-400" />
                     </div>
@@ -283,7 +283,7 @@ const DisputeFomUser = () => {
 
                 {/* Proceed Button */}
                 <div className="pt-4">
-                    <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-full text-base font-medium">
+                    <Button className="cursor-pointer w-full bg-primary hover:bg-primary hover:opacity-90 text-white py-6 rounded-full text-base font-medium">
                         Proceed
                     </Button>
                 </div>
