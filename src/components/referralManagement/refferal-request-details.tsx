@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import CustomModal from '../modal/customModal'
 import PreviousPayout from '../Payout/previous_payout'
+import RejectRefferal from './reject-refferal'
+import RefferalAccepted from './refferal-accepted'
 
 const RefferalRequestDetails = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -12,11 +14,11 @@ const RefferalRequestDetails = () => {
 
     return (
         <div>
-            <h1 className="text-center text-[24px] ">Md. Abid Hasan referrals</h1>
+            <h1 className="text-center text-[24px] ">Referral withdrawal management</h1>
 
 
             {/* user info */}
-            <div className="flex justify-center  gap-4 p-4">
+            <div className="flex justify-center  gap-4 p-4 mt-4">
 
                 {/* User Details Card */}
                 <div className="w-[50%]">
@@ -146,6 +148,32 @@ const RefferalRequestDetails = () => {
 
             </div>
 
+
+
+
+            {/* modal component(REFFERAL_REJECT) */}
+            <CustomModal
+                open={isOpen}
+                setIsOpen={setIsOpen}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[40vw]"}
+            >
+                <RejectRefferal />
+            </CustomModal>
+
+
+            {/* modal component(REFFERAL_ACCEPTED) */}
+            <CustomModal
+                open={isOpenTwo}
+                setIsOpen={setIsOpenTwo}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[40vw]"}
+            >
+                <RefferalAccepted
+                    open={isOpenTwo}
+                    setIsOpen={setIsOpenTwo}
+                />
+            </CustomModal>
 
 
 

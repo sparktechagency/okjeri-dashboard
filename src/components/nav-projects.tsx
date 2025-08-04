@@ -57,8 +57,8 @@ export function NavProjects({ projects }: NavProjectsProps) {
                       href={`/${item.url}`}
                       className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-black hover:bg-opacity-30 ${
                         isActive 
-                          ? "bg-[#FF6600] border-l-4 border-[#FF6600]" 
-                          : "text-[#fff] border-l-0"
+                         ? "bg-[#FF6600] text-white border-l-4 border-white" 
+                        : "text-gray-400 hover:bg-gray-800 "
                       }`}
                     >
                       <item.icon className="h-5 w-5" />

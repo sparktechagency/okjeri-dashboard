@@ -5,12 +5,16 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { CalendarDays, Clock, Eye, Check, Trash2, BadgeCheck } from "lucide-react"
+import { CalendarDays, Clock, Eye, Check, Trash2, BadgeCheck, Search } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useState } from "react" // Import useState
 import { is } from "zod/v4/locales"
 import CustomModal from "../modal/customModal"
 import RefferalRequestDetails from "./refferal-request-details"
+import { Input } from "../ui/input"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select"
+import RefferalAccepted from "./refferal-accepted"
+import RefferalRejUndo from "./refferal_rej_undo"
 
 type TransactionStatus = "Pending" | "Successful" | "Rejected"
 
@@ -130,8 +134,10 @@ const StatusBadge = ({ status }: { status: TransactionStatus }) => {
 }
 
 export default function RequestsContent() {
+    const [searchText, setSearchText] = useState("")
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenTwo, setIsOpenTwo] = useState(false)
+    const [isOpenThree, setIsOpenThree] = useState(false)
     const [selectedTransactions, setSelectedTransactions] = useState<Set<string>>(new Set())
 
     const handleSelectAll = (checked: boolean) => {
@@ -160,6 +166,43 @@ export default function RequestsContent() {
 
     return (
         <div className=" bg-gray-50">
+            <div className="flex items-center justify-between mb-6">
+                <div className="relative flex-1 max-w-md">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                    <Input
+                        type="text"
+                        placeholder="Search "
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                        className="pl-10 bg-white border-gray-200 rounded-full h-12 text-sm font-normal text-gray-700"
+                    />
+                </div>
+
+                <div className="">
+                    <Select>
+                        <SelectTrigger className="w-[180px]">
+                            <div className="flex items-center gap-2">
+                                {/* Filter icon */}
+                                <svg width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.875 6.4H21.125V9.6H4.875V6.4ZM0 0H26V3.2H0V0ZM9.75 12.8H16.25V16H9.75V12.8Z" fill="currentColor" className="text-muted-foreground" />
+                                </svg>
+                                <SelectValue placeholder="Filter" />
+                            </div>
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectLabel></SelectLabel>
+                                <SelectItem value="All">All</SelectItem>
+                                <SelectItem value="New">New</SelectItem>
+                                <SelectItem value="Pending">Pending</SelectItem>
+                                <SelectItem value="Completed">Completed</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                </div>
+            </div>
+
+
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
                 <div className="grid grid-cols-7 gap-4 p-4 border-b text-sm font-medium text-gray-500">
                     <div className="flex items-center gap-2">
@@ -233,7 +276,7 @@ export default function RequestsContent() {
                                 </svg>
                             </button>
                             <button
-                                // onClick={() => setIsOpen(!issOpen)}
+                                onClick={() => setIsOpenTwo(!isOpenTwo)}
                                 className="cursor-pointer">
                                 <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect y="0.5" width="37" height="37" rx="5" fill="#D8FFD8" />
@@ -242,7 +285,7 @@ export default function RequestsContent() {
 
                             </button>
                             <button
-                                // onClick={() => setIsOpenRej(!isOpenRej)}
+                                onClick={() => setIsOpenThree(!isOpenThree)}
                                 className="cursor-pointer">
                                 <svg width="34" height="38" viewBox="0 0 34 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="34" height="38" rx="6" fill="#FFE8E8" />
@@ -257,7 +300,7 @@ export default function RequestsContent() {
 
 
 
-            {/* modal component */}
+            {/* modal component(REFFERAL_REQUEST_DETAILS) */}
             <CustomModal
                 open={isOpen}
                 setIsOpen={setIsOpen}
@@ -265,6 +308,36 @@ export default function RequestsContent() {
                 maxWidth={"!max-w-[50vw]"}
             >
                 <RefferalRequestDetails />
+            </CustomModal>
+
+
+
+            {/*  modal component(REFFERAL_REQUEST_APPROVED)*/}
+            <CustomModal
+                open={isOpenTwo}
+                setIsOpen={setIsOpenTwo}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[40vw]"}
+            >
+                <RefferalAccepted
+                    open={isOpenTwo}
+                    setIsOpen={setIsOpenTwo}
+                />
+            </CustomModal>
+
+
+
+            {/*  modal component(REFFERAL_REQUEST_DELETE) */}
+            <CustomModal
+                open={isOpenThree}
+                setIsOpen={setIsOpenThree}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[40vw]"}
+            >
+                <RefferalRejUndo
+                    open={isOpenThree}
+                    setIsOpen={setIsOpenThree}
+                />
             </CustomModal>
         </div>
     )

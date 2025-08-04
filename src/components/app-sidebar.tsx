@@ -78,7 +78,7 @@ export const data = {
     },
     {
       name: "Referral management",
-      title: "Referral Program Administration",
+      title: "Referral management",
       url: "referralManagement",
       icon: ReferralIcon,
     },
