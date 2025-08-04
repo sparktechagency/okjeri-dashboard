@@ -174,12 +174,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
   <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="bg-[#1E1E1E]" />
-      <SidebarContent className="bg-[#1E1E1E] text-white">
+      <SidebarContent className="bg-[#1E1E1E] ">
         <div className="">
           <NavProjects projects={projectsWithActiveState} />
         </div>
         <NavMain items={data.navMain} />
       </SidebarContent>
+
+
+      
       <SidebarFooter className="bg-[#1E1E1E]">
         <Button 
           onClick={handleNavigate} 

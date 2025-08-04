@@ -55,10 +55,10 @@ export function NavProjects({ projects }: NavProjectsProps) {
                   <SidebarMenuButton asChild>
                     <Link
                       href={`/${item.url}`}
-                      className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-black hover:bg-opacity-30 ${
+                      className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all  ${
                         isActive 
-                         ? "bg-[#FF6600] text-white border-l-4 border-white" 
-                        : "text-gray-400 hover:bg-gray-800 "
+                         ? "bg-[#FF6600] hover:bg-gray-800 text-white border-l-4 border-white" 
+                        : "text-white "
                       }`}
                     >
                       <item.icon className="h-5 w-5" />
