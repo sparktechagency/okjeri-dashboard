@@ -171,7 +171,7 @@ const DisputeManagementPage = () => {
 
   const [commonModalOpen, setCommonModalOpen] = useState(false)
 
-
+console.log(selectedFilter)
 
   function UserProfile({ user }: { user: { name: string; avatar: string; verified: boolean } }) {
     return (

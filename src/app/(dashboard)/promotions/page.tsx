@@ -10,7 +10,6 @@ import CreateNewProvider from "@/components/providers/create_new_provider"
 import EditPromotion from "@/components/providers/edit-promotion"
 
 export default function PromotionsPage() {
-  const [isOpen, setIsOpen] = useState(false)
   const [addModalOpen, setAddModalOpen] = useState(false)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [editOpen, setEditOpen] = useState(false)

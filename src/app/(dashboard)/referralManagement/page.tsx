@@ -9,62 +9,6 @@ import SettingsContent from "@/components/referralManagement/settings-content"
 
 
 
-interface Referral {
-  slNo: string
-  referrer: {
-    name: string
-    avatar: string
-    isVerified: boolean
-  }
-  referred: {
-    name: string
-    avatar: string
-  }
-  email: string
-  date: string
-}
-
-const referrals: Referral[] = [
-  {
-    slNo: "001",
-    referrer: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-1.png", isVerified: true },
-    referred: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-2.png" },
-    email: "example@gmail.com",
-    date: "05-04-2025",
-  },
-  {
-    slNo: "001",
-    referrer: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-3.png", isVerified: true },
-    referred: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-4.png" },
-    email: "example@gmail.com",
-    date: "05-04-2025",
-  },
-  {
-    slNo: "001",
-    referrer: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-5.png", isVerified: true },
-    referred: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-1.png" },
-    email: "example@gmail.com",
-    date: "05-04-2025",
-  },
-  {
-    slNo: "001",
-    referrer: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-2.png", isVerified: true },
-    referred: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-3.png" },
-    email: "example@gmail.com",
-    date: "05-04-2025",
-  },
-  {
-    slNo: "001",
-    referrer: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-4.png", isVerified: true },
-    referred: { name: "Md. Abid Hasan", avatar: "/avatars/avatar-5.png" },
-    email: "example@gmail.com",
-    date: "05-04-2025",
-  },
-]
-
-
-
-
 export default function ReferralManagementPage() {
   const [activeTab, setActiveTab] = useState("overview")
   return (

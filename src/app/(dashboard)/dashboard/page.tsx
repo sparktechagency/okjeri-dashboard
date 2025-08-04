@@ -6,7 +6,7 @@ import RecentActivities from "@/components/ui/recent-activities"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { CalendarIcon, Download, RefreshCw, ChevronDown } from "lucide-react"
 
 
@@ -28,12 +28,6 @@ const DashboardPage = () => {
                 <ChevronDown className="w-4 h-4 ml-2" />
               </Button>
             </DropdownMenuTrigger>
-            {/* <DropdownMenuContent align="start">
-              <DropdownMenuItem onClick={() => setSelectedDateRange("Last 7 days")}>Last 7 days</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setSelectedDateRange("Last 30 days")}>Last 30 days</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setSelectedDateRange("Last 90 days")}>Last 90 days</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setSelectedDateRange("All time")}>All time</DropdownMenuItem>
-            </DropdownMenuContent> */}
           </DropdownMenu>
 
           <Button

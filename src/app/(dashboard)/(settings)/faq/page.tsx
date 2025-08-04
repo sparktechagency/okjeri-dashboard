@@ -4,7 +4,7 @@
 import { useState } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
-import { Plus, Pencil, Trash2, ChevronDown } from "lucide-react"
+import { Plus,} from "lucide-react"
 
 interface Question {
   id: string

@@ -22,6 +22,7 @@ export default function PricingControl() {
     try {
       router.back()
     } catch (error) {
+      console.log(error)
       router.push('/boostControl')
     }
   }

@@ -7,9 +7,7 @@ import { useState } from 'react'
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
-    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
@@ -121,7 +119,6 @@ const RequestedServices = () => {
     const [searchText, setSearchText] = useState('')
     const router = useRouter()
     const [isOpen, setIsOpen] = useState(false)
-    const [isOpenTwo, setIsOpenTwo] = useState(false)
     const [users, setUsers] = useState<User[]>(invoices)
     const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
 

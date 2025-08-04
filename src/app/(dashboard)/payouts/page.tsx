@@ -3,16 +3,10 @@
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
-import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Eye, Edit, Trash2, CheckCircle } from "lucide-react"
 import Image from "next/image"
-import { is } from "zod/v4/locales"
 import CustomModal from "@/components/modal/customModal"
 import PayoutManagement from "@/components/Payout/Payout_management"
 import PayoutAccepted from "@/components/Payout/payout_accepted"
@@ -131,7 +125,7 @@ const PayoutsPage = () => {
   const [startIndex, setStartIndex] = useState(0)
   const [endIndex, setIndex] = useState()
   const [selectedFilter, setSelectedFilter] = useState<string>("")
-  const router = useRouter()
+
 
 
   const [isOpen, setIsOpen] = useState(false)
@@ -169,6 +163,7 @@ const PayoutsPage = () => {
     }
   }
 
+  console.log(selectedFilter)
 
 
   return (

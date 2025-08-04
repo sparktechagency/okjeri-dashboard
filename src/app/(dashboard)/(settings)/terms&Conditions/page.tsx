@@ -7,11 +7,6 @@ import React, { useState } from 'react'
 const TermsAndConditionPage = () => {
   const [content, setContent] = useState("");
 
-  const handleSave = () => {
-    console.log("Blog content:", content);
-    // save to API or database here
-  };
-
   return (
     <div>
       <TextEditor value={content} onChange={setContent} />

@@ -1,16 +1,17 @@
 "use client"
 
 
-import { Search, CheckCircle, CalendarDays, ArrowUpRight } from "lucide-react"
+import { Search, CalendarDays, } from "lucide-react"
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import CustomModal from "@/components/modal/customModal"
+import ReferralDetails from "@/components/referralManagement/referral-details"
 
 interface Referral {
     slNo: string;
@@ -176,6 +177,7 @@ const referrals: Referral[] = [
 export default function AllReferrals() {
     const router = useRouter();
     const [searchText, setSearchText] = useState('')
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleNavigate = () => {
         router.push("/referralManagement");
@@ -274,6 +276,7 @@ export default function AllReferrals() {
                                                 <Button
                                                     variant="outline"
                                                     size="sm"
+                                                    onClick={() => setIsOpen(!isOpen)}
                                                     className="cursor-pointer border-primary text-primary  hover:text-primary"
                                                 >
                                                     See details
@@ -287,6 +290,19 @@ export default function AllReferrals() {
                     </CardContent>
                 </Card>
             </div>
+
+
+
+
+            {/* modal component(REFFERAL_DETAILS) */}
+            <CustomModal
+                open={isOpen}
+                setIsOpen={setIsOpen}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[50vw]"}
+            >
+                <ReferralDetails />
+            </CustomModal>
         </div>
     )
 }

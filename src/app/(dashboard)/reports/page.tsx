@@ -110,12 +110,11 @@ const bookingData: Report[] = [
 
 const ReportsPage = () => {
   const [searchText, setSearchText] = useState('')
-  const router = useRouter()
   const [users, setUsers] = useState<Report[]>(bookingData)
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
 
   const [isOpen, setIsOpen] = useState(false)
-  const [isOpenTwo, setIsOpenTwo] = useState(false)
+
 
 
 

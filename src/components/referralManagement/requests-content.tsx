@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button"
 import { CalendarDays, Clock, Eye, Check, Trash2, BadgeCheck } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useState } from "react" // Import useState
+import { is } from "zod/v4/locales"
+import CustomModal from "../modal/customModal"
+import RefferalRequestDetails from "./refferal-request-details"
 
 type TransactionStatus = "Pending" | "Successful" | "Rejected"
 
@@ -127,6 +130,8 @@ const StatusBadge = ({ status }: { status: TransactionStatus }) => {
 }
 
 export default function RequestsContent() {
+    const [isOpen, setIsOpen] = useState(false)
+    const [isOpenTwo, setIsOpenTwo] = useState(false)
     const [selectedTransactions, setSelectedTransactions] = useState<Set<string>>(new Set())
 
     const handleSelectAll = (checked: boolean) => {
@@ -163,8 +168,7 @@ export default function RequestsContent() {
                             aria-label="Select all transactions"
                             checked={isAllSelected}
                             onCheckedChange={handleSelectAll}
-                            // @ts-ignore - Indeterminate state is not directly supported by `checked` prop type but works visually
-                            indeterminate={isIndeterminate}
+                        // indeterminate={isIndeterminate}
                         />
                         <span>Sl. No</span>
                     </div>
@@ -221,7 +225,7 @@ export default function RequestsContent() {
 
                         <div className="flex justify-end gap-2">
                             <button
-                                // onClick={() => setIsOpenUserKyc(!issOpenUserKyc)}
+                                onClick={() => setIsOpen(!isOpen)}
                                 className="cursor-pointer">
                                 <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect y="0.5" width="37" height="37" rx="5" fill="#FFF3EB" />
@@ -250,6 +254,18 @@ export default function RequestsContent() {
 
                 ))}
             </div>
+
+
+
+            {/* modal component */}
+            <CustomModal
+                open={isOpen}
+                setIsOpen={setIsOpen}
+                className={"p-2 max-h-[0vh]"}
+                maxWidth={"!max-w-[50vw]"}
+            >
+                <RefferalRequestDetails />
+            </CustomModal>
         </div>
     )
 }

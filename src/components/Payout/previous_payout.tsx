@@ -1,10 +1,5 @@
 
 
-import { Calendar, Clock } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-
-
-
 
 interface Transaction {
     id: string
@@ -64,15 +59,15 @@ export default function PreviousPayout() {
     }
 
     return (
-        <div >
+        <div className="">
             <h1 className="text-center text-[24px] pb-4">Payout management</h1>
 
-            <div className="p-0">
-                <div className="space-y-0">
+            <div className="p-4">
+                <div className="space-y-2 ">
                     {transactions.map((transaction, index) => (
                         <div
                             key={transaction.id}
-                            className={`flex items-center justify-between p-4 ${index !== transactions.length - 1 ? "border-b border-gray-100" : ""
+                            className={`flex items-center bg-gray-100 rounded-2xl justify-between p-4 ${index !== transactions.length - 1 ? "border-b border-gray-100" : ""
                                 }`}
                         >
                             <div className="flex items-center space-x-4">
@@ -107,7 +102,7 @@ export default function PreviousPayout() {
                     ))}
                 </div>
 
-                <div className="p-4 bg-gray-50 border-t">
+                <div className="p-4 bg-gray-50 rounded-2xl mt-2">
                     <div className="flex justify-start">
                         <span className="text-lg font-semibold text-gray-900">Total: {totalPayouts} payouts</span>
                     </div>

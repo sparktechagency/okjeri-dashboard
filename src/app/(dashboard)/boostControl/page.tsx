@@ -2,13 +2,11 @@
 "use client"
 
 import { Input } from "@/components/ui/input"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Search } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+
 import Image from "next/image"
 import CustomModal from "@/components/modal/customModal"
 import ProviderDetailsOne from "@/components/boostControl/provider_details_one"
@@ -114,16 +112,7 @@ const BoostControlPage = () => {
   const [isOpenTwo, setIsOpenTwo] = useState(false)
   const [controlledItems, setControlledItems] = useState<Record<string, boolean>>({})
 
-  const [users, setUsers] = useState<boostDataProps[]>(boostData)
-  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
 
-
-
-
-  const handleDeleteUser = (id: string) => {
-    setUsers(users.filter((user) => user.id !== id))
-    setOpenPopoverId(null) // Close the popover after deletion
-  }
 
 
 

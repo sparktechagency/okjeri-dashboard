@@ -7,9 +7,7 @@ import { useState } from 'react'
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
-    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
@@ -25,9 +23,6 @@ const BoostingRequests = () => {
     const [searchText, setSearchText] = useState('')
     const router = useRouter()
     const [issOpenUserKyc, setIsOpenUserKyc] = useState(false)
-    const [issOpen, setIsOpen] = useState(false)
-    const [isOpenRej, setIsOpenRej] = useState(false)
-    const [isOpenRejTwo, setIsOpenRejTwo] = useState(false)
     const [bookingReqModal, setBookingReqModal] = useState(false)
     const [bookingReqModalRej, setBookingReqModalRej] = useState(false)
 
