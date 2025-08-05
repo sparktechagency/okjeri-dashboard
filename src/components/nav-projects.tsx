@@ -32,6 +32,11 @@ export function NavProjects({ projects }: NavProjectsProps) {
   const { isCollapsed } = useSidebar() as unknown as SidebarContext
   const pathname = usePathname()
 
+
+
+
+
+
   return (
     <SidebarGroup>
       <SidebarMenu>

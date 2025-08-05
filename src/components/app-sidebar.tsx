@@ -3,7 +3,7 @@
 "use client"
 
 import * as React from "react"
-import { Settings2 } from "lucide-react"
+import { LogOut, Settings2 } from "lucide-react"
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
 import {
@@ -12,6 +12,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
 import {
@@ -141,10 +142,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     router.push('/')
   }
 
+  const sidebarContext = useSidebar()
+  const isCollapsedVerify = sidebarContext.state
+
+
 
 
   return (
-  <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="bg-[#1E1E1E]" />
       <SidebarContent className="bg-[#1E1E1E] ">
         <div className="">
@@ -154,13 +159,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
 
 
-      
+
       <SidebarFooter className="bg-[#1E1E1E]">
-        <Button 
-          onClick={handleNavigate} 
+        <Button
+          onClick={handleNavigate}
           className="bg-[#FF6600] hover:bg-[#ff6600b9] cursor-pointer"
         >
-          Log Out
+          {
+            isCollapsedVerify === 'collapsed'
+              ? <LogOut />
+              : (
+                <>
+                  <LogOut />
+                  <span>Logout</span>
+                </>
+              )
+          }
+
         </Button>
       </SidebarFooter>
       <SidebarRail />
