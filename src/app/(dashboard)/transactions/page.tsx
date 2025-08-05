@@ -133,7 +133,7 @@ console.log(searchText, 'transiton')
 
 
       {/* Table */}
-      <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <div className="overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50 border-b border-gray-200">

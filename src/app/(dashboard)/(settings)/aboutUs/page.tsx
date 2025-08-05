@@ -12,7 +12,7 @@ const AboutPage = () => {
     <div>
       <TextEditor value={content} onChange={setContent} />
       <div className='mt-12 flex justify-end'>
-        <Button  className={"rounded-full px-20"}>Save</Button>
+        <Button  className={"rounded-full px-20 py-6"}>Save</Button>
       </div>
     </div>
   )

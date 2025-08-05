@@ -1,19 +1,14 @@
 "use client"
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { data } from "../app-sidebar";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { pageTitles } from "@/utils/pageTitles";
 
 const SiteHeader = () => {
   const pathname = usePathname();
+  const title = pageTitles[pathname] || "";
   const router = useRouter()
-  const pathSegment = pathname.split('/').pop() || '';
-  const currentProject = data.projects.find(project => project.url === pathSegment);
-  const title = currentProject?.title || '';
 
-
-  const searchParams = useSearchParams()
-  const text = searchParams.get('text')
 
 
   const handleNotification = () => {

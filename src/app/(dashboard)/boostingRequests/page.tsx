@@ -151,7 +151,7 @@ const BoostingRequests = () => {
                 </div>
             </div>
 
-            <div className='mt-10'>
+            <div className='mt-10 px-4'>
                 <Table>
                     <TableHeader>
                         <TableRow>

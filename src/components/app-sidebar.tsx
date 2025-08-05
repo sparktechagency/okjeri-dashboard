@@ -42,67 +42,56 @@ export const data = {
   projects: [
     {
       name: "Dashboard",
-      title: "Dashboard Overview",
       url: "dashboard",
       icon: DashboardIcon,
     },
     {
       name: "Users",
-      title: "Users",
       url: "users",
       icon: UsersIcon,
     },
     {
       name: "Bookings",
-      title: "Manage bookings",
       url: "bookings",
       icon: BookingIcon,
     },
     {
       name: "Services",
-      title: "Services",
       url: "services",
       icon: ServiceIcon,
     },
     {
       name: "Transactions",
-      title: "Transactions",
       url: "transactions",
       icon: TransactionIcon,
     },
     {
       name: "Payouts",
-      title: "Payout requests",
       url: "payouts",
       icon: PayoutIcon,
     },
     {
       name: "Referral management",
-      title: "Referral management",
       url: "referralManagement",
       icon: ReferralIcon,
     },
     {
       name: "Dispute management",
-      title: "Dispute management",
       url: "disputeManagement",
       icon: DisputeIcon,
     },
     {
       name: "Promotions",
-      title: "Promotions",
       url: "promotions",
       icon: Promotions,
     },
     {
       name: "Boost control",
-      title: "Boosted profiles",
       url: "boostControl",
       icon: BoostIcon,
     },
     {
       name: "Reports",
-      title: "Reports",
       url: "reports",
       icon: ReportIcon,
     },

@@ -22,7 +22,7 @@ const DisputeFomUser = () => {
 
 
     return (
-        <div>
+        <div className="pt-4">
             <div className=" bg-gray-50 p-4">
                 <div className="w-full mx-auto">
                     {/* Header */}

@@ -315,7 +315,7 @@ console.log(selectedFilter)
       {/* table */}
       {
         activeTab === "From users" ? (
-          <div className="">
+          <div className="px-4">
             <Table>
               <TableHeader>
                 <TableRow className="">
@@ -378,7 +378,7 @@ console.log(selectedFilter)
             </Table>
           </div>
         ) : (
-          <div className="">
+          <div className="px-4">
             <Table>
               <TableHeader>
                 <TableRow className="">

@@ -60,7 +60,7 @@ export default function FaqPage() {
   }
 
   return (
-    <div className="flex justify-center items-start min-h-screen bg-gray-100 p-4 sm:p-6 md:p-8">
+    <div className="flex justify-center items-start min-h-screen bg-gray-100 p-4 sm:p-6 md:p-8 mt-4 rounded-2xl">
       <div className="w-full  space-y-4">
         {questions.map((q) => (
           <div key={q.id} className="flex items-center gap-3">

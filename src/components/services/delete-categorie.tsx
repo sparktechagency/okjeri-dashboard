@@ -19,13 +19,13 @@ const DeleteCategorie:React.FC<DeleteCategorieProps> = ({ open, setIsOpen }) => 
                     <p className="text-[14px] text-[#AFAFAF] leading-relaxed">
                         Service providers will not be able to <br /> find this category.
                     </p>
-                    <div className="flex justify-between gap-4 w-full">
+                    <div className="flex justify-between gap-4 w-full mt-4">
                         <button
                             onClick={() => setIsOpen(!open)}
-                            className="w-[50%] border font-semibold  py-4 px-2 rounded-full cursor-pointer">canecel</button>
+                            className="w-[50%] border font-semibold  py-3 px-2 rounded-full cursor-pointer">canecel</button>
                         <button
                             onClick={() => setIsOpen(!open)}
-                            className="w-[50%] bg-[#EF4444] text-[#ffff] font-semibold py-4 px-2 rounded-full cursor-pointer">Yes, delete</button>
+                            className="w-[50%] bg-[#EF4444] text-[#ffff] font-semibold py-3 px-2 rounded-full cursor-pointer">Yes, delete</button>
                     </div>
                 </div>
             </div>

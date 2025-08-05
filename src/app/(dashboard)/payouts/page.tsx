@@ -208,7 +208,7 @@ const PayoutsPage = () => {
 
 
       {/* table */}
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto px-4">
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50">
