@@ -33,6 +33,8 @@ import {
 } from "./custom-icons"
 import { usePathname, useRouter } from "next/navigation"
 
+
+
 export const data = {
   user: {
     name: "shadcn",
@@ -139,33 +141,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     router.push('/')
   }
 
-  // Enhanced projects data with active state
-  const projectsWithActiveState = data.projects.map(project => {
-    // Special case for Users item
-    if (project.url === "users") {
-      return {
-        ...project,
-        isActive: pathname?.startsWith("/users") || 
-                 pathname?.startsWith("/provider") ||
-                 pathname?.startsWith("/providers") ||
-                 pathname?.startsWith("/provider/") ||
-                 pathname?.startsWith("/providers/")
-      }
-    }
-    // Default case for other items
-    return {
-      ...project,
-      isActive: pathname?.startsWith(`/${project.url}`) || 
-               pathname?.startsWith(`/${project.url}/`)
-    }
-  })
+
 
   return (
   <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="bg-[#1E1E1E]" />
       <SidebarContent className="bg-[#1E1E1E] ">
         <div className="">
-          <NavProjects projects={projectsWithActiveState} />
+          <NavProjects projects={data.projects} />
         </div>
         <NavMain items={data.navMain} />
       </SidebarContent>

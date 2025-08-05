@@ -19,9 +19,9 @@ interface SidebarContext {
 
 type ProjectItem = {
   name: string
-  title: string
+  title?: string
   url: string
-  icon: LucideIcon
+  icon:React.ComponentType<React.SVGProps<SVGSVGElement>>
 }
 
 interface NavProjectsProps {
@@ -35,18 +35,30 @@ export function NavProjects({ projects }: NavProjectsProps) {
   return (
     <SidebarGroup>
       <SidebarMenu>
-        {projects.map((item) => {
-          // Enhanced isActive logic for Users item
-          const isUsersRoute = item.url === 'users'
-          const isActive = 
-            pathname === `/${item.url}` || 
-            pathname.startsWith(`/${item.url}/`) ||
-            (isUsersRoute && (
-              pathname.startsWith('/provider') || 
-              pathname.startsWith('/providers') ||
-              pathname.startsWith('/provider/') ||
-              pathname.startsWith('/providers/')
-            ))
+          {projects.map((item) => {
+          let isActive = false
+
+          if (item.url === "users") {
+            isActive = pathname.startsWith("/users") || pathname.startsWith("/provider")
+          } 
+          else if (item.url === "services") {
+            isActive = pathname.startsWith("/services") || pathname.startsWith("/requestedServices")
+          } 
+          else if (item.url === "referralManagement") {
+            isActive = pathname.startsWith("/referralManagement") || pathname.startsWith("/allReferrals")
+          } 
+          else if (item.url === "disputeManagement") {
+            isActive = pathname.startsWith("/disputeManagement") || pathname.startsWith("/dispute_fom_user")
+          } 
+          else if (item.url === "boostControl") {
+            isActive = pathname.startsWith("/boostControl") || pathname.startsWith("/pricingControl") || pathname.startsWith("/boostingRequests")
+          } 
+        
+          else {
+            isActive =
+              pathname === `/${item.url}` ||
+              pathname.startsWith(`/${item.url}/`)
+          }
           
           return (
             <SidebarMenuItem key={item.name}>

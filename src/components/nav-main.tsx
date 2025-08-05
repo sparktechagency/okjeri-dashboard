@@ -27,11 +27,10 @@ export function NavMain({ items }: { items: any[] }) {
           {/* Main menu button */}
           <button
             onClick={() => toggleItem(item.title)}
-            className={`flex items-center rounded-lg px-3 py-2 transition-all ${
-              isCollapsed 
-                ? "justify-center hover:bg-gray-800 text-white" 
+            className={`flex items-center rounded-lg px-3 py-2 transition-all ${isCollapsed
+                ? "justify-center hover:bg-gray-800 text-white"
                 : "justify-between text-white  hover:bg-white hover:text-black "
-            }`}
+              }`}
             title={isCollapsed ? item.title : undefined}
           >
             <div className="flex items-center gap-3">
@@ -40,12 +39,11 @@ export function NavMain({ items }: { items: any[] }) {
                 <span className="text-sm">{item.title}</span>
               )}
             </div>
-            
+
             {!isCollapsed && (
               <ChevronDown
-                className={`h-4 w-4 transition-transform ${
-                  openItems[item.title] ? "rotate-180" : ""
-                }`}
+                className={`h-4 w-4 transition-transform ${openItems[item.title] ? "rotate-180" : ""
+                  }`}
               />
             )}
           </button>
@@ -54,17 +52,16 @@ export function NavMain({ items }: { items: any[] }) {
           {!isCollapsed && openItems[item.title] && (
             <div className="ml-8 mt-1 flex flex-col gap-1">
               {item.items.map((subItem: any) => {
-                const isActive = pathname === `/${subItem.url}` || 
-                               pathname.startsWith(`/${subItem.url}/`)
+                const isActive = pathname === `/${subItem.url}` ||
+                  pathname.startsWith(`/${subItem.url}/`)
                 return (
                   <Link
                     key={subItem.title}
                     href={`/${subItem.url}`}
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all ${
-                      isActive 
-                        ? "bg-[#FF6600] text-white border-l-4 border-white" 
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all ${isActive
+                        ? "bg-[#FF6600] text-white border-l-4 border-white"
                         : "text-white  hover:bg-white hover:text-black "
-                    }`}
+                      }`}
                   >
                     {!isCollapsed && subItem.icon && (
                       <subItem.icon className="h-4 w-4" />
