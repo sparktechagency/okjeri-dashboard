@@ -43,7 +43,7 @@ export function NavProjects({ projects }: NavProjectsProps) {
           let isActive = false
 
           if (item.url === "users") {
-            isActive = pathname.startsWith("/users") || pathname.startsWith("/provider")
+            isActive = pathname.startsWith("/users") || pathname.startsWith("/provider") || pathname.startsWith("/userReviewRequest") || pathname.startsWith("/userReviewRequest")  || pathname.startsWith("/userReviewDetails")
           } 
           else if (item.url === "services") {
             isActive = pathname.startsWith("/services") || pathname.startsWith("/requestedServices")

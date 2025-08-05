@@ -34,6 +34,7 @@ const ProviderReviewRequest = () => {
         try {
             router.back()
         } catch (error) {
+             console.log(error)
             router.push('/')
         }
     }

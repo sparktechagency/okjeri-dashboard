@@ -122,8 +122,6 @@ const mockData: ProviderData[] = [
 
 const PayoutsPage = () => {
   const [searchText, setSearchText] = useState('')
-  const [startIndex, setStartIndex] = useState(0)
-  const [endIndex, setIndex] = useState()
   const [selectedFilter, setSelectedFilter] = useState<string>("")
 
 

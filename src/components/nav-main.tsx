@@ -6,15 +6,34 @@ import { usePathname } from "next/navigation"
 import { ChevronDown, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import { useSidebar } from "./ui/sidebar"
+import { ComponentType } from "react";
 
 interface SidebarContext {
   isCollapsed: boolean;
 }
 
-export function NavMain({ items }: { items: any[] }) {
+
+interface NavSubItem {
+  title: string;
+  url: string;
+  icon?: ComponentType<{ className?: string }>;
+}
+
+interface NavItem {
+  title: string;
+  icon: ComponentType<{ className?: string }>;
+  items?: NavSubItem[];
+}
+
+interface NavMainProps {
+  items: NavItem[];
+}
+
+
+export function NavMain({ items }: NavMainProps) {
   const { isCollapsed } = useSidebar() as unknown as SidebarContext;
   const pathname = usePathname()
-  const [openItems, setOpenItems] = useState<Record<string, boolean>>({})
+  const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
 
   const toggleItem = (title: string) => {
     setOpenItems((prev) => ({ ...prev, [title]: !prev[title] }))
@@ -51,7 +70,7 @@ export function NavMain({ items }: { items: any[] }) {
           {/* Submenu items - only show when not collapsed and parent is open */}
           {!isCollapsed && openItems[item.title] && (
             <div className="ml-8 mt-1 flex flex-col gap-1">
-              {item.items.map((subItem: any) => {
+              {item.items && item.items.map((subItem) => {
                 const isActive = pathname === `/${subItem.url}` ||
                   pathname.startsWith(`/${subItem.url}/`)
                 return (

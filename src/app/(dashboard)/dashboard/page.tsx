@@ -10,8 +10,10 @@ import { DropdownMenu, DropdownMenuTrigger, } from "@/components/ui/dropdown-men
 import { CalendarIcon, Download, RefreshCw, ChevronDown } from "lucide-react"
 
 
+
 const DashboardPage = () => {
   const [selectedDateRange, setSelectedDateRange] = useState("Last 30 days")
+  console.log(setSelectedDateRange)
 
   return (
     <>

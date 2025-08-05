@@ -1,10 +1,8 @@
 "use client"
 
-import { useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 // Sample data sets for demonstration
 const weeklyData = [
@@ -29,8 +27,7 @@ const chartConfig = {
 }
 
 export default function WeeklyChart() {
-  const totalUsers = weeklyData.reduce((sum, item) => sum + item.users, 0)
-  const totalProviders = weeklyData.reduce((sum, item) => sum + item.providers, 0)
+
 
   return (
     <div className="">

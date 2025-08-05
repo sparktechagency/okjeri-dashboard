@@ -164,7 +164,7 @@ const ReportsPage = () => {
           </TableHeader>
 
           <TableBody>
-            {bookingData.map((booking, index) => (
+            {bookingData.map((booking) => (
               <TableRow key={booking.id} className="border-b border-gray-100 hover:bg-gray-50">
                 <TableCell className="py-4 px-4">
                   <span className="text-gray-900 text-sm font-medium">{booking.id}</span>

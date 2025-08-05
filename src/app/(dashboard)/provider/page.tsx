@@ -38,7 +38,9 @@ import CustomModal from "@/components/modal/customModal"
 import ProviderDetailsPage from "@/components/providers/provider-details"
 import UnverifiedProviderDetails from "@/components/providers/unverifed-provider-details"
 
-
+interface NavigateParams {
+    message: string
+}
 
 interface User {
     id: string | number;
@@ -138,22 +140,19 @@ const invoices: User[] = [
 
 const ProviderPage = () => {
     const [searchText, setSearchText] = useState('')
-    const [startIndex, setStartIndex] = useState(0)
-    const [endIndex, setIndex] = useState()
     const [selectedFilter, setSelectedFilter] = useState<string>("")
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenTwo, setIsOpenTwo] = useState(false)
     const router = useRouter()
     const [activeTab, setActiveTab] = useState("Providers")
-
+    console.log(selectedFilter, "selectedFilter")
 
     const [users, setUsers] = useState<User[]>(invoices)
-    const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
-    const handleDeleteUser = (id: string) => {
+    const [openPopoverId, setOpenPopoverId] = useState<string | number | null>(null)
+    const handleDeleteUser = (id: string | number) => {
         setUsers(users.filter((user) => user.id !== id))
         setOpenPopoverId(null) // Close the popover after deletion
     }
-
 
 
 
@@ -171,12 +170,12 @@ const ProviderPage = () => {
     }
 
 
-    const handleNavigate = (params:any) => {
-  if (params.message === 'verified_text') {
-      setIsOpen(!isOpen)
-    } else {
-      setIsOpenTwo(!isOpenTwo)
-    }
+    const handleNavigate = (params: NavigateParams) => {
+        if (params.message === 'verified_text') {
+            setIsOpen(!isOpen)
+        } else {
+            setIsOpenTwo(!isOpenTwo)
+        }
 
     }
 

@@ -36,9 +36,12 @@ import UserDetailsPage from "@/components/user/user-details"
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import Image from "next/image"
-import { verify } from "crypto"
 import UnverifiedUserDetails from "@/components/user/unverifed-user-details"
 
+
+interface NavigateParams {
+  message: string;
+}
 
 interface User {
   id: string | number;
@@ -146,9 +149,9 @@ const UserPage = () => {
   const [isOpenTwo, setIsOpenTwo] = useState(false)
 
   const [users, setUsers] = useState<User[]>(invoices)
-  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
+  const [openPopoverId, setOpenPopoverId] = useState<string | number | null>(null)
 
-  const handleDeleteUser = (id: string) => {
+  const handleDeleteUser = (id: string | number) => {
     setUsers(users.filter((user) => user.id !== id))
     setOpenPopoverId(null) // Close the popover after deletion
   }
@@ -175,7 +178,7 @@ const UserPage = () => {
   }, [activeTab, router])
 
 
-  const handleNavigate = (params:any) => {
+  const handleNavigate = (params:NavigateParams) => {
 
     if (params.message === 'verified_text') {
       setIsOpen(!isOpen)
@@ -340,7 +343,7 @@ const UserPage = () => {
                         <Button
                           variant="destructive"
                           size="sm"
-                          onClick={() => handleDeleteUser(user.id)}
+                          onClick={() => handleDeleteUser(user?.id)}
                           className="h-8 px-3"
                         >
                           Yes

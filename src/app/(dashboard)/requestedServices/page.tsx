@@ -120,13 +120,14 @@ const RequestedServices = () => {
     const router = useRouter()
     const [isOpen, setIsOpen] = useState(false)
     const [users, setUsers] = useState<User[]>(invoices)
-    const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
+    const [openPopoverId, setOpenPopoverId] = useState<string | number | null>(null)
 
 
     const handleNavigate = () => {
         try {
             router.back()
         } catch (error) {
+             console.log(error)
             router.push('/')
         }
     }
@@ -134,7 +135,7 @@ const RequestedServices = () => {
 
 
 
-    const handleDeleteUser = (id: string) => {
+    const handleDeleteUser = (id: string | number) => {
         setUsers(users.filter((user) => user.id !== id))
         setOpenPopoverId(null) // Close the popover after deletion
     }

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
+import Image from "next/image"
 
 
 
@@ -51,9 +52,12 @@ const EditCatrgorie = () => {
                     <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
                         {imagePreview ? (
                             <div className="space-y-4">
-                                <img
+                                <Image
                                     src={imagePreview || "/placeholder.svg"}
                                     alt="Category preview"
+                                    width={128}
+                                    height={128}
+                                    loading="lazy"
                                     className="mx-auto max-h-32 rounded-lg object-cover"
                                 />
                                 <p className="text-sm text-gray-600">Category image uploaded</p>

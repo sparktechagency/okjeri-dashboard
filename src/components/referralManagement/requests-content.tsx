@@ -160,7 +160,7 @@ export default function RequestsContent() {
     }
 
     const isAllSelected = selectedTransactions.size === transactions.length && transactions.length > 0
-    const isIndeterminate = selectedTransactions.size > 0 && selectedTransactions.size < transactions.length
+
 
     return (
         <div className=" bg-gray-50">

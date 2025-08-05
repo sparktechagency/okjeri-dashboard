@@ -182,9 +182,13 @@ const DisputeFomUser = () => {
                         </div>
                     </div>
 
-                    <div className=" text-right mr-5">
-                        <p className="text-orange-500 text-sm ">
-                            Provider's side appeal →
+                    <div className=" flex justify-end text-right mr-5">
+                        <p className="text-orange-500 text-sm flex items-center gap-2 cursor-pointer">
+                            {"Provider's side appeal"}
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.0216999 11.4411L8.5257 2.93711L2.00119 3.0185L2.02676 0.968355L12.0513 0.843303L11.9263 10.8679L9.87611 10.8934L9.9575 4.36892L1.4535 12.8729L0.0216999 11.4411Z" fill="#FF6600" />
+                            </svg>
+
                         </p>
                     </div>
                 </div>

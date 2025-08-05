@@ -91,7 +91,7 @@ export default function Component() {
 
                     <div className="w-[50%]">
                         <div className="">
-                            {data.map((item, index) => (
+                            {data.map((item) => (
                                 <div key={item.name} className="flex items-center gap-3 text-sm">
                                     <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
                                     <span className="text-gray-600 ">{item.name}</span>
