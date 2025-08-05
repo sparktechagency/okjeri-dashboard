@@ -13,7 +13,6 @@ const AllUserTransition = () => {
     const [isOpenUser, setIsOpenUser] = useState(false)
 
 
-    console.log(isOpenUser)
 
     interface Transaction {
         id: string

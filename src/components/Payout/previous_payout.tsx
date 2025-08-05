@@ -54,9 +54,7 @@ export default function PreviousPayout() {
         return `₦${amount.toLocaleString("en-NG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
     }
 
-    const getStatusVariant = (status: string) => {
-        return status === "Successful" ? "default" : "destructive"
-    }
+
 
     return (
         <div className="">

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
+import { CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 const UserNationalIdCard = () => {

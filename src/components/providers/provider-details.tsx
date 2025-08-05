@@ -2,7 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import { Wallet, ArrowUpRight, CheckCircle } from "lucide-react"
+import { Wallet, ArrowUpRight } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useState } from "react";

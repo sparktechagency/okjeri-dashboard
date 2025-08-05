@@ -6,7 +6,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import Image from "next/image"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
 
 
@@ -99,15 +98,14 @@ const bookingData = [
 const TransactionsPage = () => {
   const [searchText, setSearchText] = useState('')
   const [startIndex, setStartIndex] = useState(0)
-  const [endIndex, setIndex] = useState()
   const [selectedFilter, setSelectedFilter] = useState<string>("")
-  const router = useRouter()
+
 
   const handleSearchChange = (event:any) => {
     setSearchText(event.target.value);
   };
 
-console.log(searchText, 'transiton')
+console.log(searchText,startIndex, selectedFilter, 'transiton')
 
 
   return (

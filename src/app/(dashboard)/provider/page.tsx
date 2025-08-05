@@ -33,7 +33,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import Image from "next/image"
-import { verify } from "crypto"
+
 import CustomModal from "@/components/modal/customModal"
 import ProviderDetailsPage from "@/components/providers/provider-details"
 import UnverifiedProviderDetails from "@/components/providers/unverifed-provider-details"
@@ -171,7 +171,7 @@ const ProviderPage = () => {
     }
 
 
-    const handleNavigate = (params) => {
+    const handleNavigate = (params:any) => {
   if (params.message === 'verified_text') {
       setIsOpen(!isOpen)
     } else {

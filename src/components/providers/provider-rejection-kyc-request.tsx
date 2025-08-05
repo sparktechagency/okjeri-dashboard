@@ -6,7 +6,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import CustomModal from "../modal/customModal"
-import KycRejectedDeclined from "../user/kyc-rejected-declined"
 import ProviderKycRejectedDeclined from "./provider-kyc-rejected-declined"
 
 

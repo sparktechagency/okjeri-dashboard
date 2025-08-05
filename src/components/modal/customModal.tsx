@@ -4,7 +4,6 @@ import {
     DialogContent,
     DialogTrigger,
     DialogTitle,
-    DialogHeader,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { DialogDescription } from "@radix-ui/react-dialog";

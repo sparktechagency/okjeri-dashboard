@@ -1,7 +1,7 @@
-import { Card } from "@/components/ui/card";
+
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { User, Mail, Calendar, Clock, Flag, Download } from "lucide-react";
+import {  Flag, Download } from "lucide-react";
 import Image from "next/image";
 
 export default function ReportOfProvider() {

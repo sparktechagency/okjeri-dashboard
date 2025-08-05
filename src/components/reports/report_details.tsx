@@ -1,10 +1,8 @@
 
 "use client"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Card } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, CheckCircle, Settings, Flag, X, Clock, AlertTriangle } from "lucide-react"
+import {  Flag, } from "lucide-react"
 import { useState } from "react"
 import CustomModal from "../modal/customModal"
 import SeeReportReason from "./see_report_reason"

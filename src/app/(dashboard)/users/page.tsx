@@ -138,8 +138,7 @@ const invoices: User[] = [
 
 const UserPage = () => {
   const [searchText, setSearchText] = useState('')
-  const [startIndex, setStartIndex] = useState(0)
-  const [endIndex, setIndex] = useState()
+
   const [selectedFilter, setSelectedFilter] = useState<string>("")
   const router = useRouter()
   const [activeTab, setActiveTab] = useState("Users")
@@ -184,6 +183,8 @@ const UserPage = () => {
       setIsOpenTwo(!isOpenTwo)
     }
   }
+
+  console.log(selectedFilter)
 
   return (
     <div className="container mx-auto py-10">

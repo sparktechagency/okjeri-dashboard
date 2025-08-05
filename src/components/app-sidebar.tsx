@@ -32,7 +32,7 @@ import {
   TransactionIcon,
   UsersIcon
 } from "./custom-icons"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 
 
 
@@ -136,7 +136,6 @@ export const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const router = useRouter()
-  const pathname = usePathname()
 
   const handleNavigate = () => {
     router.push('/')

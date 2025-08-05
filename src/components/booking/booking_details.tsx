@@ -10,7 +10,6 @@ import BookingCancelReason from "./booking_cancel_reson"
 export default function BookingDetails() {
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenTwo, setIsOpenTwo] = useState(false)
-    const [isOpenThree, setIsOpenThree] = useState(false)
 
     return (
 

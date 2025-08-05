@@ -77,9 +77,6 @@ export default function ServicePage() {
 
   ]
 
-  const handleDeleteCategory = () => {
-
-  }
 
 
   const service_count = 456
