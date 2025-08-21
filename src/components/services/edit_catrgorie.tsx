@@ -41,6 +41,9 @@ const EditCatrgorie = () => {
     }
 
 
+console.log(imagePreview)
+
+
     return (
         <div>
             <h1 className="text-center text-[24px] pb-4">Edit category</h1>
